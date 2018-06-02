@@ -1,0 +1,21 @@
+{
+  "extensionName": {
+    "message": "Swagger [BETA]",
+    "description": "Should not be translated."
+  },
+
+  "shortName": {
+    "message": "Swagger",
+    "description": "Should not be translated."
+  },
+
+  "extensionDescription": {
+    "message": "Unofficial voice control for Swagbucks.com | Works only on secure (https://) pages",
+    "description": "Maximum size limit of 132 characters."
+  },
+
+  "voiceControlCta": {
+    "message": "Toggle voice control",
+    "description": "Text content of the voice control call-to-action."
+  }
+}

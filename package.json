@@ -1,0 +1,41 @@
+{
+  "name": "swagger",
+  "version": "0.1.0",
+  "description": "Unofficial voice control for Swagbucks.com | Browser extension",
+  "main": "src/content-scripts/voice-control.js",
+  "scripts": {
+    "dev": "webpack --mode development --progress",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PoziWorld/Swagger.git"
+  },
+  "keywords": [
+    "voice",
+    "control",
+    "swagbucks",
+    "extension",
+    "browser"
+  ],
+  "author": "PoziWorld, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PoziWorld/Swagger/issues"
+  },
+  "homepage": "https://github.com/PoziWorld/Swagger",
+  "devDependencies": {
+    "annyang": "^2.6.1",
+    "api-ai-javascript": "^2.0.0-beta.21",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "eslint": "^4.19.1",
+    "eslint-loader": "^2.0.0",
+    "webpack": "^4.10.2",
+    "webpack-command": "^0.2.0"
+  }
+}
