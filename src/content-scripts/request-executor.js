@@ -1,4 +1,5 @@
 import * as utils from '../shared/utils';
+import HREFS from './hrefs';
 
 /**
  *
@@ -51,11 +52,11 @@ export function search( objParameters ) {
     if ( utils.isNonEmptyString( strSearchType ) && utils.isNonEmptyString( strSearchTerm ) ) {
       switch ( strSearchType ) {
         case 'web':
-          navigateToUrl( '/?q=' + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( HREFS.SEARCH_WEB_PREFIX + encodeURIComponent( strSearchTerm ) );
 
           break;
         case 'shop':
-          navigateToUrl( '/shop/search/?shq=' + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( HREFS.SEARCH_SHOP_PREFIX + encodeURIComponent( strSearchTerm ) );
 
           break;
       }
@@ -198,7 +199,7 @@ export function toggle( objParameters ) {
  */
 
 function navigateToHomepage() {
-  navigateToUrl( '/' );
+  navigateToUrl( HREFS.HOMEPAGE );
 }
 
 /**
@@ -212,10 +213,10 @@ function navigateToShop( objParameters ) {
   const strPage = objParameters.page;
 
   if ( strCategory === '' && strPage === '' || strPage === 'homepage' || strPage === 'home' || strPage === 'main' ) {
-    navigateToUrl( '/shop' );
+    navigateToUrl( HREFS.SHOP_HOMEPAGE );
   }
   else if ( strCategory === 'shoes' ) {
-    navigateToUrl( '/shop/stores/1/shoes' );
+    navigateToUrl( HREFS.SHOP_CATEGORY_SHOES );
   }
 }
 
