@@ -14,6 +14,14 @@ Supported commands
   - the Homepage
   - Shop
     - Shop Shoes category
+  - Discover
+  - Watch
+  - Answer
+  - Rewards
+  - Swagstakes
+  - Play
+  - Search
+  - Account
 - Search for SEARCH_TERM on
   - Shop
   - Web

@@ -4,9 +4,9 @@ import HREFS from './hrefs';
 /**
  *
  * @typedef {Object} Parameters
- * @property {string} [channel] - Channel of the site (The Homepage, Shop, Discover, Watch, Answer, Rewards, Swagstakes, Search)
- * @property {string} [category] - A particular category of the channel.
- * @property {string} [page] - A particular page of the site or channel.
+ * @property {string} [Parameters.channel] - Channel of the site (The Homepage, Shop, Discover, Watch, Answer, Rewards, Swagstakes, Play, Search, Account)
+ * @property {string} [Parameters.category] - A particular category of the channel.
+ * @property {string} [Parameters.page] - A particular page of the site or channel.
  */
 
 /**
@@ -24,11 +24,16 @@ export function navigate( objParameters ) {
     if ( utils.isNonEmptyString( strChannel ) ) {
       switch ( strChannel ) {
         case 'homepage':
-          navigateToHomepage();
-
-          break;
         case 'shop':
-          navigateToShop( objParameters );
+        case 'discover':
+        case 'watch':
+        case 'answer':
+        case 'rewards':
+        case 'swagstakes':
+        case 'play':
+        case 'search':
+        case 'account':
+          navigateToChannel( strChannel, objParameters );
 
           break;
       }
@@ -195,28 +200,23 @@ export function toggle( objParameters ) {
 }
 
 /**
- * Go to the Homepage.
- */
-
-function navigateToHomepage() {
-  navigateToUrl( HREFS.HOMEPAGE );
-}
-
-/**
- * Go to a page or category of the Shop channel.
+ * Go to a page or category of the specified channel.
  *
+ * @param {Parameters.channel} strChannel
  * @param {Parameters} objParameters
  */
 
-function navigateToShop( objParameters ) {
+function navigateToChannel( strChannel, objParameters ) {
   const strCategory = objParameters.category.toLowerCase();
   const strPage = objParameters.page;
 
   if ( strCategory === '' && strPage === '' || strPage === 'homepage' || strPage === 'home' || strPage === 'main' ) {
-    navigateToUrl( HREFS.SHOP_HOMEPAGE );
+    navigateToUrl( HREFS[ `${ strChannel.toUpperCase() }_HOMEPAGE` ] );
   }
-  else if ( strCategory === 'shoes' ) {
-    navigateToUrl( HREFS.SHOP_CATEGORY_SHOES );
+  else if ( strChannel === 'shop' ) {
+    if ( strCategory === 'shoes' ) {
+      navigateToUrl( HREFS.SHOP_CATEGORY_SHOES );
+    }
   }
 }
 
