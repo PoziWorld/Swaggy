@@ -4,8 +4,8 @@
   "description": "Unofficial voice control for Swagbucks.com | Browser extension",
   "main": "src/content-scripts/voice-control.js",
   "scripts": {
-    "dev": "webpack --mode development --progress",
-    "build": "webpack --mode production",
+    "dev": "NODE_ENV=development webpack --mode development --progress",
+    "build": "NODE_ENV=production webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
