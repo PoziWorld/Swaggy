@@ -22,6 +22,13 @@ Supported commands
   - Play
   - Search
   - Account
+  - Inbox
+  - Invite
+  - Mobile
+  - SwagButton
+  - Privacy
+  - Terms
+  - About
 - Search for SEARCH_TERM on
   - Shop
   - Web

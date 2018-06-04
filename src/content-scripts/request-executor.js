@@ -4,9 +4,9 @@ import HREFS from './hrefs';
 /**
  *
  * @typedef {Object} Parameters
- * @property {string} [Parameters.channel] - Channel of the site (The Homepage, Shop, Discover, Watch, Answer, Rewards, Swagstakes, Play, Search, Account)
- * @property {string} [Parameters.category] - A particular category of the channel.
- * @property {string} [Parameters.page] - A particular page of the site or channel.
+ * @property {string} [channel] - Channel of the site (The Homepage, Shop, Discover, Watch, Answer, Rewards, Swagstakes, Play, Search, Account)
+ * @property {string} [category] - A particular category of the channel.
+ * @property {string} [page] - A particular page of the site or channel.
  */
 
 /**
@@ -36,6 +36,13 @@ export function navigate( objParameters ) {
           navigateToChannel( strChannel, objParameters );
 
           break;
+      }
+    }
+    else {
+      const strPage = objParameters.page;
+
+      if ( utils.isNonEmptyString( strPage ) ) {
+        navigateToPage( strPage );
       }
     }
   }
@@ -231,6 +238,20 @@ function navigateToChannel( strChannel, objParameters ) {
     if ( strCategory === 'shoes' ) {
       navigateToUrl( HREFS.SHOP_CATEGORY_SHOES );
     }
+  }
+}
+
+/**
+ * Go to a standalone page.
+ *
+ * @param {Parameters.page} strPage
+ */
+
+function navigateToPage( strPage ) {
+  const strHref = HREFS[ strPage.toUpperCase() ];
+
+  if ( utils.isNonEmptyString( strHref ) ) {
+    navigateToUrl( strHref );
   }
 }
 

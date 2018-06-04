@@ -1,4 +1,5 @@
 const HREFS = {
+  // Channel-specific
   ACCOUNT_HOMEPAGE: '/account/settings',
   ANSWER_HOMEPAGE: '/surveys',
   DISCOVER_HOMEPAGE: '/discover',
@@ -15,6 +16,16 @@ const HREFS = {
   SWAGSTAKES_SEARCH_PREFIX: '/s/category/-3?srt=5&src=',
   WATCH_HOMEPAGE: '/watch',
 
+  // Standalone pages
+  ABOUT: '/g/about',
+  INBOX: '/g/inbox',
+  INVITE: '/invite',
+  MOBILE: '/mobile',
+  PRIVACY: 'https://www.prodege.com/privacy/',
+  TERMS: 'https://www.prodege.com/terms/',
+  SWAGBUTTON: '/swagbutton',
+
+  // External
   HELP: 'https://github.com/PoziWorld/Swagger',
 };
 
