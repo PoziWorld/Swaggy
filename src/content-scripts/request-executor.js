@@ -202,6 +202,18 @@ export function toggle( objParameters ) {
 }
 
 /**
+ * Show the project homepage/readme.
+ *
+ * @param {Parameters} objParameters
+ */
+
+export function help( objParameters ) {
+  console.log( 'help', objParameters );
+
+  navigateToUrl( HREFS.HELP );
+}
+
+/**
  * Go to a page or category of the specified channel.
  *
  * @param {Parameters.channel} strChannel

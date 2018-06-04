@@ -40,6 +40,7 @@ Supported commands
   - my balance
   - the page
 - Toggle Swag Code widget
+- Help
 
 
 Caveats

@@ -14,6 +14,8 @@ const HREFS = {
   SWAGSTAKES_HOMEPAGE: '/swagstakes',
   SWAGSTAKES_SEARCH_PREFIX: '/s/category/-3?srt=5&src=',
   WATCH_HOMEPAGE: '/watch',
+
+  HELP: 'https://github.com/PoziWorld/Swagger',
 };
 
 export default HREFS;

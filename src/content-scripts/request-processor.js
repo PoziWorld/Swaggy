@@ -1,4 +1,5 @@
 import { ApiAiClient } from 'api-ai-javascript';
+import camelCase from 'camelcase';
 import * as executor from './request-executor';
 import * as utils from '../shared/utils';
 
@@ -29,27 +30,13 @@ export function processResponse( objResponse ) {
 
         switch ( strIntentName ) {
           case 'navigate':
-            executor.navigate( objParameters );
-
-            break;
           case 'search':
-            executor.search( objParameters );
-
-            break;
           case 'change-view':
-            executor.changeView( objParameters );
-
-            break;
           case 'sort':
-            executor.sort( objParameters );
-
-            break;
           case 'refresh':
-            executor.refresh( objParameters );
-
-            break;
           case 'toggle':
-            executor.toggle( objParameters );
+          case 'help':
+            executor[ camelCase( strIntentName ) ]( objParameters );
 
             break;
         }
