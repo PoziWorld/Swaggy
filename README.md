@@ -53,4 +53,5 @@ Supported commands
 Caveats
 --------
 
-Due to browser security policies, Swagger works only on secure (https://) pages.
+* Due to browser security policies, Swagger works only on secure (https://) pages.
+* If you navigate away from a Swagbucks domain you allowed microphone use on, Swagger will not work there.
