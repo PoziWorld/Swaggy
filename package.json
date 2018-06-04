@@ -1,6 +1,6 @@
 {
   "name": "swagger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Unofficial voice control for Swagbucks.com | Browser extension",
   "main": "src/content-scripts/voice-control.js",
   "scripts": {

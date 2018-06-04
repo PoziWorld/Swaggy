@@ -3,7 +3,7 @@
 
   "default_locale": "en_US",
   "name": "__MSG_extensionName__",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "short_name": "__MSG_shortName__",
   "description": "__MSG_extensionDescription__",
   "author": "PoziWorld, Inc.",
