@@ -25,6 +25,8 @@ Supported commands
 - Search for SEARCH_TERM on
   - Shop
   - Web
+  - Rewards
+  - Swagstakes
 - Switch to VIEW_TYPE view
   - where VIEW_TYPE:
     - cards

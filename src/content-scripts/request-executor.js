@@ -61,7 +61,9 @@ export function search( objParameters ) {
 
           break;
         case 'shop':
-          navigateToUrl( HREFS.SEARCH_SHOP_PREFIX + encodeURIComponent( strSearchTerm ) );
+        case 'rewards':
+        case 'swagstakes':
+          navigateToUrl( HREFS[ `${ strSearchType.toUpperCase() }_SEARCH_PREFIX` ] + encodeURIComponent( strSearchTerm ) );
 
           break;
       }
