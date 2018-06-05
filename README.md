@@ -16,7 +16,7 @@ Supported commands
   - to 
     - the Homepage
     - Shop
-      - Shop Shoes category
+      - Shoes category
     - Discover
     - Watch
     - Answer
@@ -51,6 +51,17 @@ Supported commands
   - the page
 - Toggle Swag Code widget
 - Help
+
+
+### Examples of what you can say
+
+- Go back
+- Go to the Homepage
+- Go to Shop Shoes category
+- Search for Amazon on Rewards
+- Switch to list view
+- Sort by points from maximum to minimum
+- Refresh the page
 
 
 Caveats
