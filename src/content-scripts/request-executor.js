@@ -253,6 +253,13 @@ function navigateToPage( strPage ) {
   if ( utils.isNonEmptyString( strHref ) ) {
     navigateToUrl( strHref );
   }
+  else {
+    const boolGoToPreviousPage = strPage === 'previous';
+
+    if ( boolGoToPreviousPage || strPage === 'next' ) {
+      window.history.go( boolGoToPreviousPage ? -1 : 1 );
+    }
+  }
 }
 
 /**

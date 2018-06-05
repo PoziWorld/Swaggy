@@ -10,25 +10,28 @@ Unofficial voice control for Swagbucks.com.
 Supported commands
 --------
 
-- Go to 
-  - the Homepage
-  - Shop
-    - Shop Shoes category
-  - Discover
-  - Watch
-  - Answer
-  - Rewards
-  - Swagstakes
-  - Play
-  - Search
-  - Account
-  - Inbox
-  - Invite
-  - Mobile
-  - SwagButton
-  - Privacy
-  - Terms
-  - About
+- Go
+  - back
+  - forward
+  - to 
+    - the Homepage
+    - Shop
+      - Shop Shoes category
+    - Discover
+    - Watch
+    - Answer
+    - Rewards
+    - Swagstakes
+    - Play
+    - Search
+    - Account
+    - Inbox
+    - Invite
+    - Mobile
+    - SwagButton
+    - Privacy
+    - Terms
+    - About
 - Search for SEARCH_TERM on
   - Shop
   - Web
