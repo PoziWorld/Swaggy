@@ -64,13 +64,13 @@ export function search( objParameters ) {
     if ( utils.isNonEmptyString( strSearchType ) && utils.isNonEmptyString( strSearchTerm ) ) {
       switch ( strSearchType ) {
         case 'web':
-          navigateToUrl( HREFS.SEARCH_WEB_PREFIX + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( HREFS.get( `SEARCH_WEB_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
         case 'shop':
         case 'rewards':
         case 'swagstakes':
-          navigateToUrl( HREFS[ `${ strSearchType.toUpperCase() }_SEARCH_PREFIX` ] + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( HREFS.get( `${ strSearchType.toUpperCase() }_SEARCH_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
       }
@@ -217,7 +217,7 @@ export function toggle( objParameters ) {
 export function help( objParameters ) {
   console.log( 'help', objParameters );
 
-  navigateToUrl( HREFS.HELP );
+  navigateToUrl( HREFS.get( `HELP` ) );
 }
 
 /**
@@ -232,11 +232,11 @@ function navigateToChannel( strChannel, objParameters ) {
   const strPage = objParameters.page;
 
   if ( strCategory === '' && strPage === '' || strPage === 'homepage' || strPage === 'home' || strPage === 'main' ) {
-    navigateToUrl( HREFS[ `${ strChannel.toUpperCase() }_HOMEPAGE` ] );
+    navigateToUrl( HREFS.get( `${ strChannel.toUpperCase() }_HOMEPAGE` ) );
   }
   else if ( strChannel === 'shop' ) {
     if ( strCategory === 'shoes' ) {
-      navigateToUrl( HREFS.SHOP_CATEGORY_SHOES );
+      navigateToUrl( HREFS.get( `SHOP_CATEGORY_SHOES` ) );
     }
   }
 }
@@ -248,7 +248,7 @@ function navigateToChannel( strChannel, objParameters ) {
  */
 
 function navigateToPage( strPage ) {
-  const strHref = HREFS[ strPage.toUpperCase() ];
+  const strHref = HREFS.get( strPage.toUpperCase() );
 
   if ( utils.isNonEmptyString( strHref ) ) {
     navigateToUrl( strHref );

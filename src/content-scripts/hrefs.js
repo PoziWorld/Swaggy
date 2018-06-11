@@ -1,4 +1,6 @@
-const HREFS = {
+import { Map } from 'immutable';
+
+const HREFS = Map( {
   // Channel-specific
   ACCOUNT_HOMEPAGE: '/account/settings',
   ANSWER_HOMEPAGE: '/surveys',
@@ -27,6 +29,6 @@ const HREFS = {
 
   // External
   HELP: 'https://github.com/PoziWorld/Swagger',
-};
+} );
 
 export default HREFS;

@@ -36,6 +36,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
+    "immutable": "^3.8.2",
     "webpack": "^4.10.2",
     "webpack-command": "^0.2.0"
   }
