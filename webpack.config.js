@@ -38,6 +38,10 @@ module.exports = {
           from: './src/_locales',
           to: './_locales',
         },
+        {
+          from: './src/shared/images/*-icon-*.png',
+          to: './icons/[name].[ext]',
+        },
       ]
     ),
   ],

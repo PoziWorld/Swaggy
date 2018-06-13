@@ -9,6 +9,12 @@
   "author": "PoziWorld, Inc.",
   "homepage_url": "https://github.com/PoziWorld/Swagger",
 
+  "icons": {
+    "16": "icons/swaggy-icon-16.png",
+    "48": "icons/swaggy-icon-48.png",
+    "128": "icons/swaggy-icon-128.png"
+  },
+
   "permissions": [
     "tabs",
     "*://*.swagbucks.com/*"
