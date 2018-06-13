@@ -28,7 +28,7 @@ const HREFS = Map( {
   SWAGBUTTON: '/swagbutton',
 
   // External
-  HELP: 'https://github.com/PoziWorld/Swagger',
+  HELP: 'https://github.com/PoziWorld/Swaggy',
 } );
 
 export default HREFS;

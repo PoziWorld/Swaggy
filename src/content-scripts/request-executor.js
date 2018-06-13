@@ -263,11 +263,11 @@ function navigateToPage( strPage ) {
 }
 
 /**
- * Navigate to the specified URL and prepend utm_source=swagger.
+ * Navigate to the specified URL and prepend utm_source=swaggy.
  *
  * @param {string} [strUrl]
  */
 
 function navigateToUrl( strUrl ) {
-  location.assign( utils.updateQueryString( 'utm_source', 'swagger', strUrl ) );
+  location.assign( utils.updateQueryString( 'utm_source', 'swaggy', strUrl ) );
 }

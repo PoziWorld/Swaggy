@@ -1,10 +1,10 @@
-Swagger
+Swaggy
 =======
 
 
 Unofficial voice control for Swagbucks.com.
 
-(Swagger is a browser extension for the Google Chrome, Opera, and other Chromium-based browsers.)
+(Swaggy is a browser extension for the Google Chrome, Opera, and other Chromium-based browsers.)
 
 
 Supported commands
@@ -67,8 +67,8 @@ Supported commands
 Caveats
 --------
 
-* Due to browser security policies, Swagger works only on secure (https://) pages.
-* If you navigate away from a Swagbucks domain you allowed microphone use on, Swagger will not work there.
+* Due to browser security policies, Swaggy works only on secure (https://) pages.
+* If you navigate away from a Swagbucks domain you allowed microphone use on, Swaggy will not work there.
 
 
 Credits

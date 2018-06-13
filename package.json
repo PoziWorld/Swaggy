@@ -1,5 +1,5 @@
 {
-  "name": "swagger",
+  "name": "swaggy",
   "version": "0.3.0",
   "description": "Unofficial voice control for Swagbucks.com | Browser extension",
   "main": "src/content-scripts/voice-control.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PoziWorld/Swagger.git"
+    "url": "git+https://github.com/PoziWorld/Swaggy.git"
   },
   "keywords": [
     "voice",
@@ -22,9 +22,9 @@
   "author": "PoziWorld, Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PoziWorld/Swagger/issues"
+    "url": "https://github.com/PoziWorld/Swaggy/issues"
   },
-  "homepage": "https://github.com/PoziWorld/Swagger",
+  "homepage": "https://github.com/PoziWorld/Swaggy",
   "devDependencies": {
     "annyang": "^2.6.1",
     "api-ai-javascript": "^2.0.0-beta.21",
