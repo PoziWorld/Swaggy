@@ -14,6 +14,96 @@
     "description": "Maximum size limit of 132 characters."
   },
 
+  "extensionAuthor": {
+    "message": "PoziWorld",
+    "description": "Should not be translated."
+  },
+
+  "loading": {
+    "message": "Loading...",
+    "description": "Shown as a part of the preloader screen on a page where data is being loaded asynchronously."
+  },
+
+  "optionsPageTitle": {
+    "message": "Options | Swaggy",
+    "description": "Title of the browser tab."
+  },
+
+  "optionsPageHeading": {
+    "message": "Options",
+    "description": "Heading of the page."
+  },
+
+  "voiceControlSettings": {
+    "message": "Voice control settings",
+    "description": "Caption for a group of settings related to voice control in Options."
+  },
+
+  "voiceControlSettingsLanguage": {
+    "message": "I will give commands in",
+    "description": "Caption for a list of languages in which the voice control commands may be given."
+  },
+
+  "voiceControlSettingsHotword": {
+    "message": "I can give a command",
+    "description": "Caption for a list of “hotwords” (keywords, key phrases) to choose from or whether the hotword functionality should be disabled."
+  },
+
+  "voiceControlSettingsCommands": {
+    "message": "I checked <0>supported commands</0> and <1>examples</1>.",
+    "description": "Let users know that there is a list of supported commands they can get familiar with by navigating the link."
+  },
+
+  "saveSettings": {
+    "message": "Save settings",
+    "description": "Text of a button acting as a submit call-to-action for the settings form in Options."
+  },
+
+  "saveSettingsTooltip": {
+    "message": "No need to press this button,\nall the changes get saved automatically.\n\nPeace! :-)",
+    "description": "Some users have asked to have the “Save settings” button, but it's not really needed for the settings to be saved."
+  },
+
+  "saveSettingsSuccess": {
+    "message": "✔️ Saved.",
+    "description": "Notifies user that the form changes have been saved."
+  },
+
+  "saveSettingsPlaceboSuccess": {
+    "message": "✔️ Autosaved.️",
+    "description": "The changes get saved automatically right away without the need to click “Save settings” button. But, if user clicks the button anyway, let this user know that it's all good. :-)"
+  },
+
+  "language_enUs": {
+    "message": "English (United States)",
+    "description": "Language code to language (for English names, https://cloud.google.com/speech-to-text/docs/languages)"
+  },
+
+  "hotword_none": {
+    "message": "at any time",
+    "description": "Answers “commandsHotword”'s message (when to expect a command). Means hotword functionality is disabled (no hotword is expected)."
+  },
+
+  "hotword_heySwaggy": {
+    "message": "after I say “Hey, Swaggy”",
+    "description": "Answers “commandsHotword”'s message (when to expect a command). Means will only listen for a specific command after user says “Hey, Swaggy”."
+  },
+
+  "hotword_heySwagbucks": {
+    "message": "after I say “Hey, Swagbucks”",
+    "description": "Answers “commandsHotword”'s message (when to expect a command). Means will only listen for a specific command after user says “Hey, Swagbucks”."
+  },
+
+  "swagbucksCopyright": {
+    "message": "Swagbucks® trademark is the property of Prodege, LLC; all rights reserved. Not sponsored, endorsed, or administered by, or associated with Prodege, LLC.",
+    "description": "Shortened version of the copyright from swagbucks.com that doesn't include any trademarks not mentioned here."
+  },
+
+  "errorInvalidSettingsReturned": {
+    "message": "Extension settings seem corrupted. Try opening Options and changing any setting to cause the extension settings to be rebuilt. If that doesn't help, you might have to remove and install the extension again.",
+    "description": "Might happen when trying to get stored extension settings in incorrect format (empty settings object)."
+  },
+
   "voiceControlCta": {
     "message": "Toggle voice control",
     "description": "Text content of the voice control call-to-action."

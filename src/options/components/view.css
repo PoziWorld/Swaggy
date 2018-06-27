@@ -1,0 +1,33 @@
+body {
+  min-width: 37rem;
+}
+
+#settingsForm {
+  margin: 2rem 3rem;
+}
+
+.settingsFormSelect {
+  display: block;
+  margin: .5rem 0;
+}
+
+#settingsForm .pwFormControls {
+  display: flex;
+  align-items: flex-start;
+}
+
+#settingsFormMessage {
+  margin: 1.2rem 0 0 1rem;
+}
+
+#copyright {
+  margin: 4rem 0 0;
+  padding: 1rem 2rem;
+  background: linear-gradient( to bottom, rgba( 238, 238, 238, .65 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
+}
+
+#copyrightText {
+  font-size: 1.1em;
+  line-height: 1.2;
+  margin: 0;
+}

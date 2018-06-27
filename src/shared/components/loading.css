@@ -1,0 +1,46 @@
+@import "../shared";
+
+#loadingContainer {
+  min-height: calc( 30rem - 6.4rem); /* width - header */
+}
+
+#loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+
+#logo {
+  width: 10rem;
+  height: 10rem;
+  background: url( ../images/poziworld-icon.svg ) center / contain no-repeat;
+  animation: blink normal 2s infinite ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#loadingText {
+  font-size: 1.4em;
+  text-align: center;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

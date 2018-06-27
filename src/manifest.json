@@ -16,9 +16,17 @@
   },
 
   "permissions": [
+    "storage",
     "tabs",
     "*://*.swagbucks.com/*"
   ],
+
+  "background": {
+    "scripts": [
+      "commons.js",
+      "background.js"
+    ]
+  },
 
   "content_scripts": [
     {
@@ -26,9 +34,15 @@
         "*://*.swagbucks.com/*"
       ],
       "js": [
-        "voice-control.js"
+        "commons.js",
+        "content-script.js"
       ],
       "run_at": "document_end"
     }
-  ]
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  }
 }

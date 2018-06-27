@@ -1,9 +1,11 @@
-import * as utils from '../shared/utils';
-import HREFS from './hrefs';
+import logger from 'Shared/logger';
+import * as utils from 'Shared/utils';
+import HREFS from 'Models/hrefs';
 
 /**
+ * Parameters for “navigate” intent.
  *
- * @typedef {Object} Parameters
+ * @typedef {Object} NavigationParameters
  * @property {string} [channel] - Channel of the site (The Homepage, Shop, Discover, Watch, Answer, Rewards, Swagstakes, Play, Search, Account)
  * @property {string} [category] - A particular category of the channel.
  * @property {string} [page] - A particular page of the site or channel.
@@ -12,11 +14,11 @@ import HREFS from './hrefs';
 /**
  * Navigate to a different channel, category, or page of the site.
  *
- * @param {Parameters} objParameters
+ * @param {NavigationParameters} objParameters
  */
 
 export function navigate( objParameters ) {
-  console.log( 'nav', objParameters );
+  logger.info( `nav: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strChannel = objParameters.channel;
@@ -33,9 +35,11 @@ export function navigate( objParameters ) {
         case 'play':
         case 'search':
         case 'account':
+        {
           navigateToChannel( strChannel, objParameters );
 
           break;
+        }
       }
     }
     else {
@@ -51,11 +55,11 @@ export function navigate( objParameters ) {
 /**
  * Search on Web, Shop, Rewards Store, Swagstakes.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function search( objParameters ) {
-  console.log( 'search', objParameters );
+  logger.info( `search: %%j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strSearchType = objParameters[ 'search-type' ];
@@ -64,15 +68,19 @@ export function search( objParameters ) {
     if ( utils.isNonEmptyString( strSearchType ) && utils.isNonEmptyString( strSearchTerm ) ) {
       switch ( strSearchType ) {
         case 'web':
+        {
           navigateToUrl( HREFS.get( `SEARCH_WEB_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
+        }
         case 'shop':
         case 'rewards':
         case 'swagstakes':
+        {
           navigateToUrl( HREFS.get( `${ strSearchType.toUpperCase() }_SEARCH_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
+        }
       }
     }
   }
@@ -81,11 +89,11 @@ export function search( objParameters ) {
 /**
  * Switch between the card and list view.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function changeView( objParameters ) {
-  console.log( 'view', objParameters );
+  logger.info( `view: %%j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strView = objParameters.view;
@@ -93,13 +101,17 @@ export function changeView( objParameters ) {
     if ( utils.isNonEmptyString( strView ) ) {
       switch ( strView ) {
         case 'card':
+        {
           document.getElementById( 'sbViewAsCardsCta' ).click();
 
           break;
+        }
         case 'list':
+        {
           document.getElementById( 'sbViewAsListCta' ).click();
 
           break;
+        }
       }
     }
   }
@@ -108,11 +120,11 @@ export function changeView( objParameters ) {
 /**
  * Sort the cards/offers.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function sort( objParameters ) {
-  console.log( 'sort', objParameters );
+  logger.info( `sort: %%j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strSort = objParameters.sort;
@@ -122,21 +134,29 @@ export function sort( objParameters ) {
 
       switch ( strSort ) {
         case 'a-z':
+        {
           intIndexToSelect = 8;
 
           break;
+        }
         case 'z-a':
+        {
           intIndexToSelect = 7;
 
           break;
+        }
         case 'sb min-max':
+        {
           intIndexToSelect = 2;
 
           break;
+        }
         case 'sb max-min':
+        {
           intIndexToSelect = 1;
 
           break;
+        }
       }
 
       if ( intIndexToSelect > -1 ) {
@@ -152,11 +172,11 @@ export function sort( objParameters ) {
 /**
  * Refresh page or SB balance.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function refresh( objParameters ) {
-  console.log( 'refresh', objParameters );
+  logger.info( `refresh: %%j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strPageElement = objParameters[ 'page-element' ];
@@ -164,20 +184,24 @@ export function refresh( objParameters ) {
     if ( utils.isNonEmptyString( strPageElement ) ) {
       switch ( strPageElement ) {
         case 'page':
+        {
           navigateToUrl();
 
           break;
+        }
         case 'balance':
+        {
           const $$balanceContainer = document.getElementById( 'sbBalanceContainer' );
 
           $$balanceContainer.classList.add( 'active' );
           document.getElementById( 'sbBalanceRefresh' ).click();
 
-          setTimeout( function () {
+          setTimeout( () => {
             $$balanceContainer.classList.remove( 'active' );
           }, 3000 );
 
           break;
+        }
       }
     }
   }
@@ -186,11 +210,11 @@ export function refresh( objParameters ) {
 /**
  * Toggle (show/hide) a page element.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function toggle( objParameters ) {
-  console.log( 'toggle', objParameters );
+  logger.info( `toggle: %%j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strPageElement = objParameters[ 'page-element' ];
@@ -198,11 +222,13 @@ export function toggle( objParameters ) {
     if ( utils.isNonEmptyString( strPageElement ) ) {
       switch ( strPageElement ) {
         case 'swagcode':
+        {
           const boolIsShown = $( '#sbGlobalNavSwagCodeDropdown' ).is( ':visible' );
 
           $( '#sbSwagCodeContainer' ).trigger( boolIsShown ? 'mouseout' : 'mouseover' );
 
           break;
+        }
       }
     }
   }
@@ -211,20 +237,20 @@ export function toggle( objParameters ) {
 /**
  * Show the project homepage/readme.
  *
- * @param {Parameters} objParameters
+ * @param {Object} objParameters
  */
 
 export function help( objParameters ) {
-  console.log( 'help', objParameters );
+  logger.info( `help: %%j`, objParameters );
 
-  navigateToUrl( HREFS.get( `HELP` ) );
+  navigateToUrl( HREFS.get( `EXTENSION_HELP` ) );
 }
 
 /**
  * Go to a page or category of the specified channel.
  *
- * @param {Parameters.channel} strChannel
- * @param {Parameters} objParameters
+ * @param {NavigationParameters.channel} strChannel
+ * @param {NavigationParameters} objParameters
  */
 
 function navigateToChannel( strChannel, objParameters ) {
@@ -244,7 +270,7 @@ function navigateToChannel( strChannel, objParameters ) {
 /**
  * Go to a standalone page.
  *
- * @param {Parameters.page} strPage
+ * @param {NavigationParameters.page} strPage
  */
 
 function navigateToPage( strPage ) {

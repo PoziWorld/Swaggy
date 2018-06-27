@@ -28,7 +28,9 @@ const HREFS = Map( {
   SWAGBUTTON: '/swagbutton',
 
   // External
-  HELP: 'https://github.com/PoziWorld/Swaggy',
+  EXTENSION_HELP: 'https://github.com/PoziWorld/Swaggy',
+  EXTENSION_COMMANDS: 'https://github.com/PoziWorld/Swaggy#supported-commands',
+  EXTENSION_COMMANDS_EXAMPLES: 'https://github.com/PoziWorld/Swaggy#examples-of-what-you-can-say',
 } );
 
 export default HREFS;

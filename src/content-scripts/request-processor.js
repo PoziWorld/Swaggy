@@ -1,7 +1,10 @@
 import { ApiAiClient } from 'api-ai-javascript';
 import camelCase from 'camelcase';
+
+import logger from 'Shared/logger';
+import * as utils from 'Shared/utils';
+
 import * as executor from './request-executor';
-import * as utils from '../shared/utils';
 
 import { ACCESS_TOKEN_DEVELOPMENT, ACCESS_TOKEN_PRODUCTION } from '../.privateaccesstoken.js';
 
@@ -16,7 +19,7 @@ export const processor = new ApiAiClient( {
  */
 
 export function processResponse( objResponse ) {
-  console.log( 'processResponse', objResponse );
+  logger.verbose( `processResponse: %j`, objResponse );
 
   if ( utils.isNonEmptyObject( objResponse ) ) {
     const objResult = objResponse.result;
@@ -36,9 +39,11 @@ export function processResponse( objResponse ) {
           case 'refresh':
           case 'toggle':
           case 'help':
+          {
             executor[ camelCase( strIntentName ) ]( objParameters );
 
             break;
+          }
         }
       }
     }
@@ -46,11 +51,11 @@ export function processResponse( objResponse ) {
 }
 
 /**
+ * On text-to-intent API failure.
  *
- * @todo
  * @param {Object} objError
  */
 
 export function processError( objError ) {
-
+  logger.error( objError );
 }
