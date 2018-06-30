@@ -5,11 +5,10 @@ import camelCase from 'camelcase';
 import * as utils from 'Shared/utils';
 import t from 'Shared/i18n';
 import { voiceControlViewPropertiesShape } from 'Models/settings';
-import { getSettingsStorageObjectName } from 'Models/storage';
 
 import { FIELD_NAME_SEPARATOR } from './options';
 
-const STORAGE_GROUP_NAME = getSettingsStorageObjectName();
+const STORAGE_GROUP_NAME = 'settings';
 const EMPTY_VALUE = 'none';
 
 export default class Setting extends PureComponent {

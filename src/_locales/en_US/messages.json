@@ -104,8 +104,23 @@
     "description": "Might happen when trying to get stored extension settings in incorrect format (empty settings object)."
   },
 
-  "voiceControlCta": {
-    "message": "Toggle voice control",
-    "description": "Text content of the voice control call-to-action."
+  "browserActionBadgeText_on": {
+    "message": "ON",
+    "description": "Browser action badge text when the voice control listener is active. Ideally, should be 2-3 characters long. Otherwise, it will be shortened anyway and “...” will be displayed next to it."
+  },
+
+  "browserActionBadgeText_off": {
+    "message": "OFF",
+    "description": "Browser action badge text when the voice control listener is active. Ideally, should be 2-3 characters long. Otherwise, it will be shortened anyway and “...” will be displayed next to it."
+  },
+
+  "browserActionBadgeTitle_on": {
+    "message": "{{extensionName}}:\nListening for commands: YES.\n\nClick to switch voice control off.",
+    "description": "Browser action badge title displayed in a tooltip over the browser action's icon when the voice control listener is active."
+  },
+
+  "browserActionBadgeTitle_off": {
+    "message": "{{extensionName}}:\nListening for commands: NO.\n\nClick to switch voice control on.",
+    "description": "Browser action badge title displayed in a tooltip over the browser action's icon when the voice control listener is inactive."
   }
 }

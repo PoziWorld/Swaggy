@@ -2,9 +2,16 @@ import browser from 'webextension-polyfill';
 
 import * as utils from 'Shared/utils';
 import { getVersion } from 'Shared/extension';
+import { handleOnMessageEvent } from 'Shared/messaging';
 import { SETTINGS_INTRODUCED_VERSION, setDefaultSettings } from 'Models/settings';
+import { setDefaultListener } from 'Models/listener';
 
-addListeners();
+init();
+
+function init() {
+  addListeners();
+  disableBrowserAction();
+}
 
 /**
  * Define what events the background should listen to.
@@ -12,6 +19,15 @@ addListeners();
 
 function addListeners() {
   browser.runtime.onInstalled.addListener( handleOnInstalledEvent );
+  browser.runtime.onMessage.addListener( handleOnMessageEvent );
+}
+
+/**
+ * Browser action icon will only be shown for supported pages.
+ */
+
+function disableBrowserAction() {
+  browser.browserAction.disable();
 }
 
 /**
@@ -31,12 +47,15 @@ async function handleOnInstalledEvent( { reason, previousVersion } ) {
 }
 
 /**
- * Set up default settings (store them in the Storage for later use).
+ * Set up default settings (store them in the Storage for later use) and listener data.
+ *
+ * @return {Promise<void>}
  */
 
 async function initialize() {
   try {
     await setDefaultSettings();
+    await setDefaultListener();
   }
   catch ( e ) {
     /**

@@ -59,7 +59,7 @@ export function navigate( objParameters ) {
  */
 
 export function search( objParameters ) {
-  logger.info( `search: %%j`, objParameters );
+  logger.info( `search: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strSearchType = objParameters[ 'search-type' ];
@@ -93,7 +93,7 @@ export function search( objParameters ) {
  */
 
 export function changeView( objParameters ) {
-  logger.info( `view: %%j`, objParameters );
+  logger.info( `view: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strView = objParameters.view;
@@ -124,7 +124,7 @@ export function changeView( objParameters ) {
  */
 
 export function sort( objParameters ) {
-  logger.info( `sort: %%j`, objParameters );
+  logger.info( `sort: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strSort = objParameters.sort;
@@ -176,7 +176,7 @@ export function sort( objParameters ) {
  */
 
 export function refresh( objParameters ) {
-  logger.info( `refresh: %%j`, objParameters );
+  logger.info( `refresh: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strPageElement = objParameters[ 'page-element' ];
@@ -214,7 +214,7 @@ export function refresh( objParameters ) {
  */
 
 export function toggle( objParameters ) {
-  logger.info( `toggle: %%j`, objParameters );
+  logger.info( `toggle: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const strPageElement = objParameters[ 'page-element' ];
@@ -241,7 +241,7 @@ export function toggle( objParameters ) {
  */
 
 export function help( objParameters ) {
-  logger.info( `help: %%j`, objParameters );
+  logger.info( `help: %j`, objParameters );
 
   navigateToUrl( HREFS.get( `EXTENSION_HELP` ) );
 }

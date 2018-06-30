@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { List, Map } from 'immutable';
 
 import logger from 'Shared/logger';
-import { getSettings as getSettingsFromStorage, setSettings as setSettingsInStorage } from 'Models/storage';
+import { getStorageItem, setStorageItem } from 'Models/storage';
 import HOTWORDS, { DEFAULT_HOTWORD } from 'Models/hotwords';
 import VOICE_CONTROL_LANGUAGES, { DEFAULT_VOICE_CONTROL_LANGUAGE } from 'Models/voice-control-languages';
 
@@ -18,10 +18,10 @@ export const SETTINGS_INTRODUCED_VERSION = '0.4.0';
  * - Voice control
  *
  * @typedef {Object} SettingsWrapped
- * @param {Object} settings
- * @param {Object} settings.voiceControl
- * @param {Object} settings.voiceControl.language
- * @param {Object} settings.voiceControl.hotword
+ * @property {Object} settings
+ * @property {Object} settings.voiceControl
+ * @property {string} settings.voiceControl.language
+ * @property {string} settings.voiceControl.hotword
  */
 
 /**
@@ -112,9 +112,7 @@ const schema = new GraphQLSchema( {
     fields: () => ( {
       settings: {
         type: SettingsType,
-        resolve() {
-          return getSettingsFromStorage();
-        },
+        resolve: () => getStorageItem( `settings` ),
       },
     } ),
   } ),
@@ -124,9 +122,9 @@ const schema = new GraphQLSchema( {
       settings: {
         type: SettingsType,
         async resolve( settingsWrapped ) {
-          await setSettingsInStorage( settingsWrapped );
+          await setStorageItem( `settings`, settingsWrapped );
 
-          return getSettingsFromStorage();
+          return getStorageItem( `settings` );
         },
       },
     } ),

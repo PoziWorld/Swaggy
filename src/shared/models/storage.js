@@ -14,60 +14,63 @@ import * as utils from 'Shared/utils';
 
 const STORAGE_AREAS = Map( {
   settings: 'sync',
+  listener: 'local',
 } );
 
 /**
- * Retrieve settings from the Storage.
+ * Retrieve the item (settings, listener data) from the Storage.
  *
+ * @param {string} itemName
  * @return {Promise<Object>}
  */
 
-export async function getSettings() {
-  try {
-    const { settings } = await browser.storage[ getSettingsStorageAreaName() ].get( getSettingsStorageObjectName() );
+export async function getStorageItem( itemName ) {
+  if ( utils.isNonEmptyString( itemName ) ) {
+    try {
+      const itemWrapped = await browser.storage[ getStorageAreaName( itemName ) ].get( itemName );
 
-    if ( utils.isNonEmptyObject( settings ) ) {
-      return settings;
+      if ( utils.isNonEmptyObject( itemWrapped ) ) {
+        return itemWrapped[ itemName ];
+      }
     }
-  }
-  catch ( e ) {
-    /**
-     * @todo
-     */
+    catch ( e ) {
+      /**
+       * @todo
+       */
+    }
   }
 }
 
 /**
- * Save settings in the Storage.
+ * Save the item (settings, listener data) in the Storage.
  *
- * @param {SettingsWrapped} settingsWrapped
+ * @param {string} itemName
+ * @param {(SettingsWrapped|ListenerWrapped)} itemWrapped
  * @return {Promise<boolean>}
  */
 
-export async function setSettings( settingsWrapped ) {
-  if ( utils.isNonEmptyObject( settingsWrapped ) ) {
+export async function setStorageItem( itemName, itemWrapped ) {
+  if ( utils.isNonEmptyObject( itemWrapped ) ) {
     try {
-      let newSettingsWrapped;
+      let newItemWrapped;
+      const existingItem = await getStorageItem( itemName );
 
-      const existingSettings = await getSettings();
+      if ( utils.isNonEmptyObject( existingItem ) ) {
+        const existingItemWrapped = {};
 
-      if ( utils.isNonEmptyObject( existingSettings ) ) {
-        const existingSettingsWrapped = {
-          settings: existingSettings,
-        };
-
-        newSettingsWrapped = mergeDeep( existingSettingsWrapped, settingsWrapped );
+        existingItemWrapped[ itemName ] = existingItem;
+        newItemWrapped = mergeDeep( existingItemWrapped, itemWrapped );
       }
       else {
-        newSettingsWrapped = settingsWrapped;
+        newItemWrapped = itemWrapped;
       }
 
-      await browser.storage[ getSettingsStorageAreaName() ].set( newSettingsWrapped );
+      await browser.storage[ getStorageAreaName( itemName ) ].set( newItemWrapped );
 
       return true;
     }
     catch ( e ) {
-      logger.debug( `setSettings (storage): fail: %j`, e );
+      logger.debug( `setStorageItem: fail: %j`, e );
 
       return false;
     }
@@ -77,19 +80,14 @@ export async function setSettings( settingsWrapped ) {
 /**
  * Return the name of a storage area where the settings are kept.
  *
- * @return {string}
+ * @param {string} itemName
+ * @return {(string|boolean)}
  */
 
-export function getSettingsStorageAreaName() {
-  return STORAGE_AREAS.get( `settings` );
-}
+export function getStorageAreaName( itemName ) {
+  if ( utils.isNonEmptyString( itemName ) ) {
+    return STORAGE_AREAS.get( itemName );
+  }
 
-/**
- * In case the settings object in the Storage ever gets renamed, only one reference needs to be updated.
- *
- * @return {string}
- */
-
-export function getSettingsStorageObjectName() {
-  return 'settings';
+  return false;
 }

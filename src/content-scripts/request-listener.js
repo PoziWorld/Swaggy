@@ -3,50 +3,46 @@ import browser from 'webextension-polyfill';
 
 import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
+import { queries } from 'Shared/messaging';
+import { getListener, setListener } from 'Models/listener';
 import { getSettings } from 'Models/settings';
-import { getSettingsStorageAreaName } from 'Models/storage';
+import { getStorageAreaName } from 'Models/storage';
 
 import { processor, processResponse, processError } from './request-processor';
 
 let boolHasBeenInitialized = false;
 
-init();
-
 /**
  * Check whether to start listening automatically, add a toggle on the page, listen for settings changes in the Storage.
  */
 
-function init() {
+export function initVoiceControlListener() {
   shouldAutostart();
-  addToggle();
   listenForStorageChanges();
 }
 
 /**
  * Check whether to start listening automatically.
+ *
+ * @return {Promise<void>}
  */
 
-function shouldAutostart() {
-  if ( utils.isStorageAccessible() && localStorage.getItem( 'boolShouldVoiceControlAutostart' ) === 'true' ) {
-    handleVoiceControlToggle();
+async function shouldAutostart() {
+  try {
+    const { autostart } = await getListener();
+
+    if ( utils.is( autostart, 'boolean' ) && autostart ) {
+      await handleVoiceControlToggle();
+    }
+    else {
+      await switchListener( false );
+    }
   }
-}
-
-/**
- * Add a toggle to the page and add a toggle click listener.
- */
-
-function addToggle() {
-  const $$toggle = document.createElement( 'button' );
-  const $$toggleParent = document.createElement( 'li' );
-
-  $$toggle.id = 'sbVoiceControlCta';
-  $$toggle.classList.add( 'sbMenuCta', 'sbCta' );
-  $$toggle.textContent = browser.i18n.getMessage( 'voiceControlCta' );
-  $$toggle.addEventListener( 'click', handleVoiceControlToggle );
-
-  $$toggleParent.appendChild( $$toggle );
-  document.getElementById( 'sbUserMenuList' ).appendChild( $$toggleParent );
+  catch ( e ) {
+    /**
+     * @todo
+     */
+  }
 }
 
 /**
@@ -65,7 +61,7 @@ function listenForStorageChanges() {
  */
 
 function handleStorageChanges( changes, areaName ) {
-  if ( utils.isNonEmptyString( areaName ) && areaName === getSettingsStorageAreaName() && utils.isNonEmptyObject( changes ) ) {
+  if ( utils.isNonEmptyString( areaName ) && areaName === getStorageAreaName( `settings` ) && utils.isNonEmptyObject( changes ) ) {
     const { settings: { newValue, oldValue } } = changes;
 
     if ( utils.isNonEmptyObject( newValue ) && utils.isNonEmptyObject( oldValue ) ) {
@@ -82,10 +78,11 @@ function handleStorageChanges( changes, areaName ) {
 /**
  * Handle a toggle click.
  *
- * @param {Event} [event]
+ * @param {Event} [event] *
+ * @return {Promise<void>}
  */
 
-async function handleVoiceControlToggle( event ) {
+export async function handleVoiceControlToggle( event ) {
   if ( event ) {
     event.preventDefault();
   }
@@ -93,11 +90,9 @@ async function handleVoiceControlToggle( event ) {
   if ( annyang ) {
     if ( annyang.isListening() ) {
       annyang.abort();
+      logger.verbose( 'component: voice-control: aborted' );
 
-      if ( utils.isStorageAccessible() ) {
-        localStorage.setItem( 'boolShouldVoiceControlAutostart', false );
-        logger.verbose( 'component: voice-control: aborted' );
-      }
+      await switchListener( false );
     }
     else {
       if ( ! boolHasBeenInitialized ) {
@@ -118,9 +113,7 @@ async function handleVoiceControlToggle( event ) {
       annyang.start();
       logger.verbose( 'component: voice-control: attempting to start' );
 
-      if ( utils.isStorageAccessible() ) {
-        localStorage.setItem( 'boolShouldVoiceControlAutostart', true );
-      }
+      await switchListener( true );
     }
   }
 }
@@ -157,5 +150,59 @@ function handleCommands( command ) {
       .then( processResponse )
       .catch( processError )
       ;
+  }
+}
+
+/**
+ * If the listener is enabled before window unload, start it automatically next time a supported page is opened.
+ * Show the listener status via the browser action icon.
+ *
+ * @param {boolean} active
+ * @return {Promise<void>}
+ */
+
+async function switchListener( active ) {
+  try {
+    await setListener( {
+      listener: {
+        autostart: active,
+      },
+    } );
+
+    await setBrowserAction( {
+      listening: active,
+    } );
+  }
+  catch ( e ) {
+    /**
+     * @todo
+     */
+  }
+}
+
+/**
+ * Send a message to the background script to change browser action state for this tab.
+ *
+ * @param {Object} options
+ * @return {Promise<void>}
+ */
+
+export async function setBrowserAction( options ) {
+  if ( utils.isNonEmptyObject( options ) ) {
+    try {
+      const response = await browser.runtime.sendMessage( {
+        apiRequest: {
+          query: queries.browserAction.mutation,
+          data: options,
+        },
+      } );
+
+      logger.verbose( `setBrowserAction: %j`, response );
+    }
+    catch ( e ) {
+      /**
+       * @todo
+       */
+    }
   }
 }

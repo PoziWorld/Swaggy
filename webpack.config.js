@@ -9,7 +9,7 @@ const modeDevelopment = process.env.NODE_ENV === 'development';
 const defaultConfig = Map( {
   entry: {
     'background': './src/background/background.js',
-    'content-script': './src/content-scripts/voice-control.js',
+    'content-script': './src/content-scripts/content-script.js',
     'options': './src/options/options.js',
   },
   output: Map( {
@@ -117,6 +117,8 @@ const defaultConfig = Map( {
     alias: {
       Shared: path.resolve( __dirname, 'src', 'shared' ),
       Models: path.resolve( __dirname, 'src', 'shared', 'models' ),
+      Background: path.resolve( __dirname, 'src', 'background' ),
+      ContentScripts: path.resolve( __dirname, 'src', 'content-scripts' ),
     },
     extensions: [
       '.mjs',
