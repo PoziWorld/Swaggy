@@ -1,6 +1,8 @@
 import { Map } from 'immutable';
 
-const HREFS = Map( {
+import * as utils from 'Shared/utils';
+
+const URLS = Map( {
   // Channel-specific
   ACCOUNT_HOMEPAGE: '/account/settings',
   ANSWER_HOMEPAGE: '/surveys',
@@ -34,4 +36,17 @@ const HREFS = Map( {
   EXTENSION_COMMANDS_EXAMPLES: 'https://github.com/PoziWorld/Swaggy#examples-of-what-you-can-say',
 } );
 
-export default HREFS;
+/**
+ * Find a URL by the link name.
+ *
+ * @param {string} linkName
+ * @return {(string|boolean)}
+ */
+
+export default function getUrl( linkName ) {
+  if ( utils.isNonEmptyString( linkName ) ) {
+    return URLS.get( linkName.toUpperCase() );
+  }
+
+  return false;
+}

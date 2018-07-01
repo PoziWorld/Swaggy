@@ -8,7 +8,7 @@ import { queries } from 'Shared/messaging';
 import { getListener, setListener } from 'Models/listener';
 import { getSettings } from 'Models/settings';
 import { getStorageAreaName } from 'Models/storage';
-import HREFS from 'Models/hrefs';
+import getUrl from 'Models/urls';
 
 import { processor, processResponse, processError } from './request-processor';
 
@@ -315,8 +315,8 @@ function logStatusChange( active ) {
       message = t(
         STARTED_LOG_MESSAGE_KEY,
         {
-          supportedCommandUrl: HREFS.get( `EXTENSION_COMMANDS` ),
-          examplesUrl: HREFS.get( `EXTENSION_COMMANDS_EXAMPLES` ),
+          supportedCommandUrl: getUrl( `EXTENSION_COMMANDS` ),
+          examplesUrl: getUrl( `EXTENSION_COMMANDS_EXAMPLES` ),
         },
       );
     }
@@ -340,7 +340,7 @@ function logRecognizedText( text ) {
       RECOGNIZED_TEXT_LOG_MESSAGE_KEY,
       {
         text,
-        optionsUrl: HREFS.get( `EXTENSION_OPTIONS_CHROMIUM` ).replace( `EXTENSION_ID`, browser.runtime.id ),
+        optionsUrl: getUrl( `EXTENSION_OPTIONS_CHROMIUM` ).replace( `EXTENSION_ID`, browser.runtime.id ),
       },
     );
 

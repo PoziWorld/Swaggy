@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Trans } from 'react-i18next';
 
 import t from 'Shared/i18n';
-import HREFS from 'Models/hrefs';
+import getUrl from 'Models/urls';
 import { settingsShape, settingsToViewProperties } from 'Models/settings';
 
 import Setting from './setting';
@@ -47,8 +47,8 @@ export default class View extends PureComponent {
             ) }
             <p className="pwText">
               <Trans i18nKey="voiceControlSettingsCommands.message">
-                <a href={ HREFS.get( `EXTENSION_COMMANDS` ) }>.</a>
-                <a href={ HREFS.get( `EXTENSION_COMMANDS_EXAMPLES` ) }>.</a>
+                <a href={ getUrl( `EXTENSION_COMMANDS` ) }>.</a>
+                <a href={ getUrl( `EXTENSION_COMMANDS_EXAMPLES` ) }>.</a>
               </Trans>
             </p>
           </fieldset>

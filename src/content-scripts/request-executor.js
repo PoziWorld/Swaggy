@@ -1,6 +1,6 @@
 import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
-import HREFS from 'Models/hrefs';
+import getUrl from 'Models/urls';
 
 /**
  * Parameters for “navigate” intent.
@@ -69,7 +69,7 @@ export function search( objParameters ) {
       switch ( strSearchType ) {
         case 'web':
         {
-          navigateToUrl( HREFS.get( `SEARCH_WEB_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( getUrl( `SEARCH_WEB_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
         }
@@ -77,7 +77,7 @@ export function search( objParameters ) {
         case 'rewards':
         case 'swagstakes':
         {
-          navigateToUrl( HREFS.get( `${ strSearchType.toUpperCase() }_SEARCH_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( getUrl( `${ strSearchType }_SEARCH_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
 
           break;
         }
@@ -243,7 +243,7 @@ export function toggle( objParameters ) {
 export function help( objParameters ) {
   logger.info( `help: %j`, objParameters );
 
-  navigateToUrl( HREFS.get( `EXTENSION_HELP` ) );
+  navigateToUrl( getUrl( `EXTENSION_HELP` ) );
 }
 
 /**
@@ -258,11 +258,11 @@ function navigateToChannel( strChannel, objParameters ) {
   const strPage = objParameters.page;
 
   if ( strCategory === '' && strPage === '' || strPage === 'homepage' || strPage === 'home' || strPage === 'main' ) {
-    navigateToUrl( HREFS.get( `${ strChannel.toUpperCase() }_HOMEPAGE` ) );
+    navigateToUrl( getUrl( `${ strChannel }_HOMEPAGE` ) );
   }
   else if ( strChannel === 'shop' ) {
     if ( strCategory === 'shoes' ) {
-      navigateToUrl( HREFS.get( `SHOP_CATEGORY_SHOES` ) );
+      navigateToUrl( getUrl( `SHOP_CATEGORY_SHOES` ) );
     }
   }
 }
@@ -274,7 +274,7 @@ function navigateToChannel( strChannel, objParameters ) {
  */
 
 function navigateToPage( strPage ) {
-  const strHref = HREFS.get( strPage.toUpperCase() );
+  const strHref = getUrl( strPage );
 
   if ( utils.isNonEmptyString( strHref ) ) {
     navigateToUrl( strHref );
