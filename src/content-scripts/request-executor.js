@@ -69,7 +69,7 @@ export function search( objParameters ) {
       switch ( strSearchType ) {
         case 'web':
         {
-          navigateToUrl( getUrl( `SEARCH_WEB_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( getUrl( `SEARCH_WEB` ).replace( `%s`, encodeURIComponent( strSearchTerm ) ) );
 
           break;
         }
@@ -77,7 +77,7 @@ export function search( objParameters ) {
         case 'rewards':
         case 'swagstakes':
         {
-          navigateToUrl( getUrl( `${ strSearchType }_SEARCH_PREFIX` ) + encodeURIComponent( strSearchTerm ) );
+          navigateToUrl( getUrl( `${ strSearchType }_SEARCH` ).replace( `%s`, encodeURIComponent( strSearchTerm ) ) );
 
           break;
         }

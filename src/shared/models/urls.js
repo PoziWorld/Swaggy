@@ -10,14 +10,14 @@ const URLS = Map( {
   HOMEPAGE_HOMEPAGE: '/', // Will there be categories, pages for this channel?
   PLAY_HOMEPAGE: '/games',
   REWARDS_HOMEPAGE: '/rewards-store',
-  REWARDS_SEARCH_PREFIX: '/p/category/-3?srt=5&src=',
+  REWARDS_SEARCH: '/p/category/-3?srt=5&src=%s',
   SEARCH_HOMEPAGE: 'https://search.swagbucks.com/',
-  SEARCH_WEB_PREFIX: '/?q=',
+  SEARCH_WEB: '/?q=%s',
   SHOP_HOMEPAGE: '/shop',
   SHOP_CATEGORY_SHOES: '/shop/stores/1/shoes',
-  SHOP_SEARCH_PREFIX: '/shop/search/?shq=',
+  SHOP_SEARCH: '/shop/search/?shq=%s',
   SWAGSTAKES_HOMEPAGE: '/swagstakes',
-  SWAGSTAKES_SEARCH_PREFIX: '/s/category/-3?srt=5&src=',
+  SWAGSTAKES_SEARCH: '/s/category/-3?srt=5&src=%s',
   WATCH_HOMEPAGE: '/watch',
 
   // Standalone pages
