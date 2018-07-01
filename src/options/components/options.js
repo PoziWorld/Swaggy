@@ -150,7 +150,7 @@ class Options extends PureComponent {
    */
 
   notifyUser( messageKey ) {
-    if ( ! utils.is( messageKey, 'string' ) ) {
+    if ( ! utils.is( messageKey, `string` ) ) {
       return;
     }
 

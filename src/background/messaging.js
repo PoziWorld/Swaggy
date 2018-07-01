@@ -44,7 +44,7 @@ const statusOffIcons = generateStatusIconsDictionary( `off` );
 export async function setBrowserAction( { data: { listening }, tab: { id: tabId } } ) {
   logger.verbose( `setBrowserAction: %j, %j`, listening, tabId );
 
-  if ( utils.is( listening, 'boolean' ) ) {
+  if ( utils.is( listening, `boolean` ) ) {
     try {
       const enabled = await browser.browserAction.isEnabled( { tabId: tabId } );
       logger.verbose( `setBrowserAction: %s`, enabled );
@@ -125,7 +125,7 @@ function composeTitle( status ) {
  */
 
 function enableBrowserAction( tabId ) {
-  logger.verbose( `enableBrowserAction: %s`, tabId );
+  logger.verbose( `enableBrowserAction: %i`, tabId );
 
   browser.browserAction.enable( tabId );
 
@@ -141,7 +141,7 @@ function enableBrowserAction( tabId ) {
  */
 
 async function requestToSwitchVoiceControlListener( { id: tabId } ) {
-  logger.verbose( `requestToSwitchVoiceControlListener: %s`, tabId );
+  logger.verbose( `requestToSwitchVoiceControlListener: %i`, tabId );
 
   try {
     const response = await browser.tabs.sendMessage(

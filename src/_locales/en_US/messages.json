@@ -122,5 +122,20 @@
   "browserActionBadgeTitle_off": {
     "message": "{{extensionName}}:\nListening for commands: NO.\n\nClick to switch voice control on.",
     "description": "Browser action badge title displayed in a tooltip over the browser action's icon when the voice control listener is inactive."
+  },
+
+  "logListenerStartedEvent": {
+    "message": "\n\nVoice control listener is now ready for your commands!\n\nSupported commands – {{- supportedCommandUrl}}\nExamples of what you can say – {{- examplesUrl}}\n\n",
+    "description": "In case user checks the DevTools Console tab in the browser, let user know that he or she can now give commands and show the helpful links (list of supported commands and examples)."
+  },
+
+  "logListenerStoppedEvent": {
+    "message": "\n\nVoice control listener is off now.\n\nClick the microphone icon next to the address bar to turn the listener on.\n\n",
+    "description": "In case user checks the DevTools Console tab in the browser, let user know that he or she cannot give commands at the moment and instruct how to turn the listener on."
+  },
+
+  "logListenerRecognizedTextEvent": {
+    "message": "\n\nVoice control listener recognized the following text:\n“{{- text}}”.\n\nIf that is not what you tried to say, try the following:\n– Speak slower.\n– Speak closer to your microphone.\n– Minimize background noise.\n\nIf this happened when you didn't expect anything to be recognized, try setting a hotword to avoid giving unintended commands.\n\nCopy and paste the following URL in a new tab to open the Options:\n{{- optionsUrl}}\n\n",
+    "description": "In case user checks the DevTools Console tab in the browser, let user know that some text has been recognized (intended or not) and tips on improving the quality of recognition and avoiding giving commands when not expected."
   }
 }
