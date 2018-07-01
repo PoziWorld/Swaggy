@@ -2,7 +2,6 @@
   "name": "swaggy",
   "version": "0.3.0",
   "description": "Unofficial voice control for Swagbucks.com | Browser extension",
-  "main": "src/content-scripts/voice-control.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack --mode development --progress",
     "build": "NODE_ENV=production webpack --mode production",
