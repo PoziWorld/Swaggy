@@ -3,11 +3,8 @@
 
   "default_locale": "en_US",
   "name": "__MSG_extensionName__",
-  "version": "0.3.0",
   "short_name": "__MSG_shortName__",
   "description": "__MSG_extensionDescription__",
-  "author": "PoziWorld, Inc.",
-  "homepage_url": "https://github.com/PoziWorld/Swaggy",
 
   "icons": {
     "16": "icons/swaggy-icon-16.png",
@@ -42,10 +39,5 @@
       ],
       "run_at": "document_end"
     }
-  ],
-
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
-  }
+  ]
 }

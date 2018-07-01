@@ -8,6 +8,7 @@ const modeDevelopment = process.env.NODE_ENV === 'development';
 
 const defaultConfig = Map( {
   entry: {
+    'manifest': './src/manifest.json',
     'background': './src/background/background.js',
     'content-script': './src/content-scripts/content-script.js',
     'options': './src/options/options.js',
@@ -35,6 +36,11 @@ const defaultConfig = Map( {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
+      },
+      {
+        test: /manifest.json$/,
+        exclude: /node_modules/,
+        loader: 'manifest-loader',
       },
       {
         test: /\.mjs$/,
@@ -78,7 +84,10 @@ const defaultConfig = Map( {
       {
         test: /\.json$/,
         type: 'javascript/auto',
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /manifest.json$/,
+        ],
         loader: 'json-loader',
       },
       {
@@ -95,7 +104,6 @@ const defaultConfig = Map( {
 
     new CopyWebpackPlugin(
       [
-        './src/manifest.json',
         {
           from: './src/_locales',
           to: './_locales',
@@ -126,6 +134,12 @@ const defaultConfig = Map( {
       '.css',
     ],
   },
+  resolveLoader: {
+    modules: [
+      path.resolve( __dirname, 'src', 'loaders' ),
+      'node_modules',
+    ],
+  },
   node: {
     fs: 'empty',
   },
@@ -135,6 +149,13 @@ const defaultConfig = Map( {
 
 const supportedBrowsers = [
   'chromium',
+
+  /**
+   * @todo Uncomment when Speech Recognition API is implemented. https://caniuse.com/#feat=speech-recognition | https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#Browser_compatibility
+   */
+
+  // 'firefox',
+  // 'edge',
 ];
 
 module.exports = supportedBrowsers.map( browserName => {
