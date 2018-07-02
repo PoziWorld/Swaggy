@@ -1,24 +1,4 @@
 /**
- * Check whether localStorage is available and accessible.
- *
- * @return {boolean}
- */
-
-export function isStorageAccessible() {
-  const test = 'test';
-
-  try {
-    localStorage.setItem( test, test );
-    localStorage.removeItem( test );
-
-    return true;
-  }
-  catch (e) {
-    return false;
-  }
-}
-
-/**
  * Check whether the provided value is of 'string' type and non-empty.
  *
  * @param {*} value
