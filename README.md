@@ -14,6 +14,8 @@ Supported commands
   - back
   - forward
   - to 
+    - Sign up
+    - Log in
     - the Homepage
     - Shop
       - Shoes category
