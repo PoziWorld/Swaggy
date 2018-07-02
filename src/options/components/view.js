@@ -28,6 +28,15 @@ const helpfulLinks = List( [
   ] ),
 ] );
 
+const sisterProjects = List( [
+  'Print Waste Minimizer',
+  'Scroll To Top Button',
+  'PoziWorld Elf',
+  'PoziTone',
+] );
+
+const queryParameterRefValue = 'yepo';
+
 /**
  * The screen to show when the required data has been retrieved asynchronously and is now ready.
  */
@@ -88,8 +97,14 @@ export default class View extends PureComponent {
             </p>
           </div>
         </form>
-        <aside>
+        <aside className="linksContainer">
           <Links links={ helpfulLinks } />
+        </aside>
+        <aside className="linksContainer">
+          <h6 id="sisterProjectsHeading">
+            { t( `sisterProjects` ) }
+          </h6>
+          <Links links={ sisterProjects } referrer={ queryParameterRefValue } />
         </aside>
         <aside id="copyright">
           <p id="copyrightText">

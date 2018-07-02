@@ -24,6 +24,22 @@ body {
 
 /* Links */
 
+.linksContainer::before {
+  content: '';
+  position: absolute;
+  top: -1.7rem;
+  right: 0;
+  left: 0;
+  height: .1rem;
+  border-top: .1rem dashed #ccc;
+}
+
+#sisterProjectsHeading {
+  font-size: 1.6em;
+  margin: 4rem 3rem 1rem;
+  font-weight: 500;
+}
+
 .links {
   margin: 0 3rem;
   padding-left: 1.7rem;

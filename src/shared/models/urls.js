@@ -38,6 +38,12 @@ const URLS = Map( {
   EXTENSION_COMMANDS_EXAMPLES: 'https://github.com/PoziWorld/Swaggy#examples-of-what-you-can-say',
   EXTENSION_TRANSLATION_PORTAL: 'https://www.transifex.com/poziworld/swaggy/',
   EXTENSION_RELEASE_NOTES: 'https://github.com/PoziWorld/Swaggy/releases',
+
+  // Sister projects
+  PRINT_WASTE_MINIMIZER: 'https://printwasteminimizer.com',
+  SCROLL_TO_TOP_BUTTON: 'https://scroll-to-top-button.com',
+  POZIWORLD_ELF: 'https://github.com/PoziWorld/PoziWorld-Elf',
+  POZITONE: 'https://pozitone.com',
 } );
 
 /**
@@ -49,8 +55,19 @@ const URLS = Map( {
 
 export default function getUrl( linkName ) {
   if ( utils.isNonEmptyString( linkName ) ) {
-    return URLS.get( linkName.toUpperCase() );
+    return URLS.get( formatLinkName( linkName ) );
   }
 
   return false;
+}
+
+/**
+ * Convert text to URLS object property.
+ *
+ * @param {string} linkName
+ * @return {string}
+ */
+
+function formatLinkName( linkName ) {
+  return linkName.toUpperCase().replace( / /g, `_` );
 }

@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+* {
+  position: relative;
+}
+
 .pwVisuallyHidden {
   position: absolute !important;
   height: .1rem;
