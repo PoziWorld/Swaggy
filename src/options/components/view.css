@@ -2,6 +2,8 @@ body {
   min-width: 37rem;
 }
 
+/* Settings */
+
 #settingsForm {
   margin: 2rem 3rem;
 }
@@ -19,6 +21,21 @@ body {
 #settingsFormMessage {
   margin: 1.2rem 0 0 1rem;
 }
+
+/* Links */
+
+.links {
+  margin: 0 3rem;
+  padding-left: 1.7rem;
+}
+
+.linkWrapper {
+  font-size: 1.4em;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+}
+
+/* Copyright */
 
 #copyright {
   margin: 4rem 0 0;

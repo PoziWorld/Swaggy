@@ -3,6 +3,8 @@ import { Map } from 'immutable';
 import * as utils from 'Shared/utils';
 
 const URLS = Map( {
+  SIGN_UP_FULL: 'https://www.swagbucks.com/p/register?rb=45597732',
+
   // Channel-specific
   ACCOUNT_HOMEPAGE: '/account/settings',
   ANSWER_HOMEPAGE: '/surveys',
@@ -34,6 +36,8 @@ const URLS = Map( {
   EXTENSION_HELP: 'https://github.com/PoziWorld/Swaggy',
   EXTENSION_COMMANDS: 'https://github.com/PoziWorld/Swaggy#supported-commands',
   EXTENSION_COMMANDS_EXAMPLES: 'https://github.com/PoziWorld/Swaggy#examples-of-what-you-can-say',
+  EXTENSION_TRANSLATION_PORTAL: 'https://www.transifex.com/poziworld/swaggy/',
+  EXTENSION_RELEASE_NOTES: 'https://github.com/PoziWorld/Swaggy/releases',
 } );
 
 /**

@@ -35,7 +35,7 @@ export default class Setting extends PureComponent {
             onBlur={ handleChange }
             onChange={ handleChange }
               >
-            { optionsList.map( ( value ) =>
+            { optionsList.map( value =>
               <option key={ value || EMPTY_VALUE } value={ value }>
                 { t( `${ settingName }_${ utils.isNonEmptyString( value ) ? camelCase( value ) : EMPTY_VALUE }` ) }
               </option>

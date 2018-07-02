@@ -94,6 +94,21 @@
     "description": "Answers “commandsHotword”'s message (when to expect a command). Means will only listen for a specific command after user says “Hey, Swagbucks”."
   },
 
+  "joinSwagbucks": {
+    "message": "Join Swagbucks",
+    "description": "Text of a link to the Swagbucks sign-up page."
+  },
+
+  "helpTranslate": {
+    "message": "Help translate {{shortName}}",
+    "description": "Text of a link to the Swaggy translation portal."
+  },
+
+  "releaseNotes": {
+    "message": "Release notes",
+    "description": "Text of a link to the Swaggy changelog (release notes, version history)."
+  },
+
   "swagbucksCopyright": {
     "message": "Swagbucks® trademark is the property of Prodege, LLC; all rights reserved. Not sponsored, endorsed, or administered by, or associated with Prodege, LLC.",
     "description": "Shortened version of the copyright from swagbucks.com that doesn't include any trademarks not mentioned here."
