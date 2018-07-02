@@ -83,5 +83,6 @@ Credits
 --------
 
 * “[Swag Glasses](https://thenounproject.com/term/swag-glasses/1342454/)” icon by Royyan Wijaya from [the Noun Project](https://thenounproject.com/).
+* “[Microphone](https://thenounproject.com/term/microphone/250540/)” icon by Danny Lelieveld from [the Noun Project](https://thenounproject.com/).
 * <sub>Swagbucks® trademark is the property of Prodege, LLC; all rights reserved.</sub>
 * <sub>All trademarks mentioned belong to their owners, third party brands, product names, trade names, corporate names and company names mentioned may be trademarks of their respective owners or registered trademarks of other companies and are used for purposes of explanation and to the owner's benefit, without implying a violation of copyright law.</sub>
