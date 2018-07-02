@@ -55,51 +55,51 @@ export function is( value, type ) {
  * Add, remove, or update a query string parameter.
  * https://stackoverflow.com/a/11654596
  *
- * @param {string} strKey - The query string key to add, remove, or update.
- * @param {string} [strValue] - The value for the key.
- * @param {string} [strUrl=window.location.href] - The URL to modify.
+ * @param {string} key - The query string key to add, remove, or update.
+ * @param {string} [value] - The value for the key.
+ * @param {string} [url=window.location.href] - The URL to modify.
  * @return {*}
  */
 
-export function updateQueryString( strKey, strValue, strUrl ) {
-  if ( ! strUrl ) {
-    strUrl = window.location.href;
+export function updateQueryString( key, value, url ) {
+  if ( ! url ) {
+    url = window.location.href;
   }
 
-  const regex = new RegExp( '([?&])' + strKey + '=.*?(&|#|$)(.*)', 'gi' );
-  let strHash;
+  const regex = new RegExp( '([?&])' + key + '=.*?(&|#|$)(.*)', 'gi' );
+  let hash;
 
-  if ( regex.test( strUrl ) ) {
-    if ( typeof strValue !== 'undefined' && strValue !== null ) {
-      return strUrl.replace( regex, '$1' + strKey + '=' + strValue + '$2$3' );
+  if ( regex.test( url ) ) {
+    if ( typeof value !== 'undefined' && value !== null ) {
+      return url.replace( regex, '$1' + key + '=' + value + '$2$3' );
     }
     else {
-      strHash = strUrl.split( '#' );
-      strUrl = strHash[ 0 ].replace( regex, '$1$3' ).replace( /(&|\?)$/, '' );
-      let strHashValue = strHash[ 1 ];
+      hash = url.split( '#' );
+      url = hash[ 0 ].replace( regex, '$1$3' ).replace( /(&|\?)$/, '' );
+      let hashValue = hash[ 1 ];
 
-      if ( typeof strHashValue !== 'undefined' && strHashValue !== null ) {
-        strUrl += '#' + strHashValue;
+      if ( typeof hashValue !== 'undefined' && hashValue !== null ) {
+        url += '#' + hashValue;
       }
 
-      return strUrl;
+      return url;
     }
   }
   else {
-    if ( typeof strValue !== 'undefined' && strValue !== null ) {
-      const strSeparator = strUrl.indexOf( '?' ) !== -1 ? '&' : '?';
-      strHash = strUrl.split( '#' );
-      strUrl = strHash[ 0 ] + strSeparator + strKey + '=' + strValue;
-      let strHashValue = strHash[ 1 ];
+    if ( typeof value !== 'undefined' && value !== null ) {
+      const separator = url.indexOf( '?' ) !== -1 ? '&' : '?';
+      hash = url.split( '#' );
+      url = hash[ 0 ] + separator + key + '=' + value;
+      let hashValue = hash[ 1 ];
 
-      if ( typeof strHashValue !== 'undefined' && strHashValue !== null ) {
-        strUrl += '#' + strHashValue;
+      if ( typeof hashValue !== 'undefined' && hashValue !== null ) {
+        url += '#' + hashValue;
       }
 
-      return strUrl;
+      return url;
     }
     else {
-      return strUrl;
+      return url;
     }
   }
 }

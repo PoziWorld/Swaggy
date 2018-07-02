@@ -28,10 +28,10 @@ export function processResponse( objResponse ) {
       const objMetadata = objResult.metadata;
 
       if ( utils.isNonEmptyObject( objMetadata ) ) {
-        const strIntentName = objMetadata.intentName;
+        const intentName = objMetadata.intentName;
         const objParameters = objResult.parameters;
 
-        switch ( strIntentName ) {
+        switch ( intentName ) {
           case 'navigate':
           case 'search':
           case 'change-view':
@@ -40,7 +40,7 @@ export function processResponse( objResponse ) {
           case 'toggle':
           case 'help':
           {
-            executor[ camelCase( strIntentName ) ]( objParameters );
+            executor[ camelCase( intentName ) ]( objParameters );
 
             break;
           }

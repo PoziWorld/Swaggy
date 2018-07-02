@@ -21,10 +21,10 @@ export function navigate( objParameters ) {
   logger.info( `nav: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strChannel = objParameters.channel;
+    const channel = objParameters.channel;
 
-    if ( utils.isNonEmptyString( strChannel ) ) {
-      switch ( strChannel ) {
+    if ( utils.isNonEmptyString( channel ) ) {
+      switch ( channel ) {
         case 'homepage':
         case 'shop':
         case 'discover':
@@ -36,17 +36,17 @@ export function navigate( objParameters ) {
         case 'search':
         case 'account':
         {
-          navigateToChannel( strChannel, objParameters );
+          navigateToChannel( channel, objParameters );
 
           break;
         }
       }
     }
     else {
-      const strPage = objParameters.page;
+      const page = objParameters.page;
 
-      if ( utils.isNonEmptyString( strPage ) ) {
-        navigateToPage( strPage );
+      if ( utils.isNonEmptyString( page ) ) {
+        navigateToPage( page );
       }
     }
   }
@@ -62,14 +62,14 @@ export function search( objParameters ) {
   logger.info( `search: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strSearchType = objParameters[ 'search-type' ];
-    const strSearchTerm = objParameters[ 'search-term' ];
+    const searchType = objParameters[ 'search-type' ];
+    const searchTerm = objParameters[ 'search-term' ];
 
-    if ( utils.isNonEmptyString( strSearchType ) && utils.isNonEmptyString( strSearchTerm ) ) {
-      switch ( strSearchType ) {
+    if ( utils.isNonEmptyString( searchType ) && utils.isNonEmptyString( searchTerm ) ) {
+      switch ( searchType ) {
         case 'web':
         {
-          navigateToUrl( getUrl( `SEARCH_WEB` ).replace( `%s`, encodeURIComponent( strSearchTerm ) ) );
+          navigateToUrl( getUrl( `SEARCH_WEB` ).replace( `%s`, encodeURIComponent( searchTerm ) ) );
 
           break;
         }
@@ -77,7 +77,7 @@ export function search( objParameters ) {
         case 'rewards':
         case 'swagstakes':
         {
-          navigateToUrl( getUrl( `${ strSearchType }_SEARCH` ).replace( `%s`, encodeURIComponent( strSearchTerm ) ) );
+          navigateToUrl( getUrl( `${ searchType }_SEARCH` ).replace( `%s`, encodeURIComponent( searchTerm ) ) );
 
           break;
         }
@@ -96,10 +96,10 @@ export function changeView( objParameters ) {
   logger.info( `view: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strView = objParameters.view;
+    const view = objParameters.view;
 
-    if ( utils.isNonEmptyString( strView ) ) {
-      switch ( strView ) {
+    if ( utils.isNonEmptyString( view ) ) {
+      switch ( view ) {
         case 'card':
         {
           document.getElementById( 'sbViewAsCardsCta' ).click();
@@ -127,42 +127,42 @@ export function sort( objParameters ) {
   logger.info( `sort: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strSort = objParameters.sort;
+    const sort = objParameters.sort;
 
-    if ( utils.isNonEmptyString( strSort ) ) {
-      let intIndexToSelect = -1;
+    if ( utils.isNonEmptyString( sort ) ) {
+      let indexToSelect = -1;
 
-      switch ( strSort ) {
+      switch ( sort ) {
         case 'a-z':
         {
-          intIndexToSelect = 8;
+          indexToSelect = 8;
 
           break;
         }
         case 'z-a':
         {
-          intIndexToSelect = 7;
+          indexToSelect = 7;
 
           break;
         }
         case 'sb min-max':
         {
-          intIndexToSelect = 2;
+          indexToSelect = 2;
 
           break;
         }
         case 'sb max-min':
         {
-          intIndexToSelect = 1;
+          indexToSelect = 1;
 
           break;
         }
       }
 
-      if ( intIndexToSelect > -1 ) {
+      if ( indexToSelect > -1 ) {
         const $$sort = document.getElementById( 'sbShopSort' );
 
-        $$sort.value = intIndexToSelect;
+        $$sort.value = indexToSelect;
         $$sort.dispatchEvent( new CustomEvent( 'change' ) );
       }
     }
@@ -179,10 +179,10 @@ export function refresh( objParameters ) {
   logger.info( `refresh: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strPageElement = objParameters[ 'page-element' ];
+    const pageElement = objParameters[ 'page-element' ];
 
-    if ( utils.isNonEmptyString( strPageElement ) ) {
-      switch ( strPageElement ) {
+    if ( utils.isNonEmptyString( pageElement ) ) {
+      switch ( pageElement ) {
         case 'page':
         {
           navigateToUrl();
@@ -217,15 +217,15 @@ export function toggle( objParameters ) {
   logger.info( `toggle: %j`, objParameters );
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
-    const strPageElement = objParameters[ 'page-element' ];
+    const pageElement = objParameters[ 'page-element' ];
 
-    if ( utils.isNonEmptyString( strPageElement ) ) {
-      switch ( strPageElement ) {
+    if ( utils.isNonEmptyString( pageElement ) ) {
+      switch ( pageElement ) {
         case 'swagcode':
         {
-          const boolIsShown = $( '#sbGlobalNavSwagCodeDropdown' ).is( ':visible' );
+          const visible = $( '#sbGlobalNavSwagCodeDropdown' ).is( ':visible' );
 
-          $( '#sbSwagCodeContainer' ).trigger( boolIsShown ? 'mouseout' : 'mouseover' );
+          $( '#sbSwagCodeContainer' ).trigger( visible ? 'mouseout' : 'mouseover' );
 
           break;
         }
@@ -278,20 +278,20 @@ function navigateToChannel( channel, objParameters ) {
 /**
  * Go to a standalone page.
  *
- * @param {NavigationParameters.page} strPage
+ * @param {NavigationParameters.page} page
  */
 
-function navigateToPage( strPage ) {
-  const strHref = getUrl( strPage );
+function navigateToPage( page ) {
+  const url = getUrl( page );
 
-  if ( utils.isNonEmptyString( strHref ) ) {
-    navigateToUrl( strHref );
+  if ( utils.isNonEmptyString( url ) ) {
+    navigateToUrl( url );
   }
   else {
-    const boolGoToPreviousPage = strPage === 'previous';
+    const toPreviousPage = page === 'previous';
 
-    if ( boolGoToPreviousPage || strPage === 'next' ) {
-      window.history.go( boolGoToPreviousPage ? -1 : 1 );
+    if ( toPreviousPage || page === 'next' ) {
+      window.history.go( toPreviousPage ? -1 : 1 );
     }
   }
 }
@@ -299,11 +299,11 @@ function navigateToPage( strPage ) {
 /**
  * Navigate to the specified URL and prepend utm_source=swaggy.
  *
- * @param {string} [strUrl]
+ * @param {string} [url]
  */
 
-function navigateToUrl( strUrl ) {
-  if ( utils.isNonEmptyString( strUrl ) ) {
-    location.assign( utils.updateQueryString( 'utm_source', 'swaggy', strUrl ) );
+function navigateToUrl( url ) {
+  if ( utils.isNonEmptyString( url ) ) {
+    location.assign( utils.updateQueryString( 'utm_source', 'swaggy', url ) );
   }
 }
