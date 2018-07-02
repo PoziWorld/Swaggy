@@ -4,7 +4,7 @@ Swaggy
 
 Unofficial voice control for Swagbucks.com.
 
-(Swaggy is a browser extension for the Google Chrome, Opera, and other Chromium-based browsers.)
+(Swaggy is a browser extension for Google Chrome.)
 
 
 Supported commands
