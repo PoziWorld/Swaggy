@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Trans } from 'react-i18next';
 import { List } from 'immutable';
+import bowser from 'bowser';
 
 import t from 'Shared/i18n';
 import getUrl from 'Models/urls';
@@ -37,6 +38,16 @@ const sisterProjects = List( [
 
 const queryParameterRefValue = 'yepo';
 
+let browserNameForRating = bowser.name.toLowerCase();
+
+/**
+ * @todo When accepted to Opera Add-ons, check for Opera.
+ */
+
+if ( bowser.webkit || bowser.blink ) {
+  browserNameForRating = 'chromium';
+}
+
 /**
  * The screen to show when the required data has been retrieved asynchronously and is now ready.
  */
@@ -56,6 +67,16 @@ export default class View extends PureComponent {
 
     return (
       <div>
+        <aside className="secondaryInfoContainer beforePrimary">
+          <p id="ratingHelpsDiscoverability" className="secondaryInfo">
+            <Trans i18nKey="ratingHelpsDiscoverability.message">
+              <a
+                href={ getUrl( `EXTENSION_RATE_${ browserNameForRating }` ) }
+                className="secondaryInfoLink"
+                  >.</a>
+            </Trans>
+          </p>
+        </aside>
         <form id="settingsForm">
           <fieldset className="pwFormGroup">
             <legend className="pwFormGroupCaption">
@@ -97,10 +118,10 @@ export default class View extends PureComponent {
             </p>
           </div>
         </form>
-        <aside className="linksContainer">
+        <aside className="secondaryInfoContainer">
           <Links links={ helpfulLinks } />
         </aside>
-        <aside className="linksContainer">
+        <aside className="secondaryInfoContainer">
           <h6 id="sisterProjectsHeading">
             { t( `sisterProjects` ) }
           </h6>

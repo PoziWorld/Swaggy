@@ -2,6 +2,46 @@ body {
   min-width: 37rem;
 }
 
+/* Secondary information */
+
+.secondaryInfoContainer::before {
+  content: '';
+  position: absolute;
+  top: -1.7rem;
+  right: 0;
+  left: 0;
+  height: .1rem;
+  border-top: .1rem dashed #ccc;
+}
+
+.secondaryInfoContainer.beforePrimary::before {
+  top: unset;
+  bottom: -1.7rem;
+}
+
+.secondaryInfo {
+  font-size: 1.4em;
+  line-height: 1.3;
+  margin: 0 3rem;
+  padding: 0;
+  color: #555;
+}
+
+#ratingHelpsDiscoverability {
+  margin-bottom: 4rem;
+  padding-bottom: 1rem;
+  white-space: pre-line;
+}
+
+.secondaryInfoLink {
+  color: #3673de;
+  text-decoration: none;
+}
+
+.secondaryInfoLink:hover {
+  text-decoration: underline;
+}
+
 /* Settings */
 
 #settingsForm {
@@ -23,16 +63,6 @@ body {
 }
 
 /* Links */
-
-.linksContainer::before {
-  content: '';
-  position: absolute;
-  top: -1.7rem;
-  right: 0;
-  left: 0;
-  height: .1rem;
-  border-top: .1rem dashed #ccc;
-}
 
 #sisterProjectsHeading {
   font-size: 1.6em;

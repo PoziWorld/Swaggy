@@ -36,6 +36,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "bowser": "^1.9.3",
     "bundle-loader": "^0.5.6",
     "camelcase": "^5.0.0",
     "copy-webpack-plugin": "^4.5.2",

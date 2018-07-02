@@ -32,6 +32,7 @@ const URLS = Map( {
   SWAGBUTTON: '/swagbutton',
 
   // External
+  EXTENSION_RATE_CHROMIUM: 'https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf/reviews',
   EXTENSION_OPTIONS_CHROMIUM: 'chrome://extensions/?options=EXTENSION_ID',
   EXTENSION_HELP: 'https://github.com/PoziWorld/Swaggy',
   EXTENSION_COMMANDS: 'https://github.com/PoziWorld/Swaggy#supported-commands',

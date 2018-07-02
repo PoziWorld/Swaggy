@@ -94,6 +94,11 @@
     "description": "Answers “commandsHotword”'s message (when to expect a command). Means will only listen for a specific command after user says “Hey, Swagbucks”."
   },
 
+  "ratingHelpsDiscoverability": {
+    "message": "Please <0>rate this extension</0> if you enjoy it!\nThe feedback really helps others find this extension!",
+    "description": "Encourage users to rate the extension."
+  },
+
   "joinSwagbucks": {
     "message": "Join Swagbucks",
     "description": "Text of a link to the Swagbucks sign-up page."
