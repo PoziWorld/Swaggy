@@ -249,21 +249,29 @@ export function help( objParameters ) {
 /**
  * Go to a page or category of the specified channel.
  *
- * @param {NavigationParameters.channel} strChannel
+ * @param {NavigationParameters.channel} channel
  * @param {NavigationParameters} objParameters
  */
 
-function navigateToChannel( strChannel, objParameters ) {
-  const strCategory = objParameters.category.toLowerCase();
-  const strPage = objParameters.page;
+function navigateToChannel( channel, objParameters ) {
+  const category = objParameters.category.toLowerCase();
+  const page = objParameters.page;
 
-  if ( strCategory === '' && strPage === '' || strPage === 'homepage' || strPage === 'home' || strPage === 'main' ) {
-    navigateToUrl( getUrl( `${ strChannel }_HOMEPAGE` ) );
+  if ( category === '' && page === '' || page === 'homepage' || page === 'home' || page === 'main' ) {
+    navigateToUrl( getUrl( `${ channel }_HOMEPAGE` ) );
   }
-  else if ( strChannel === 'shop' ) {
-    if ( strCategory === 'shoes' ) {
-      navigateToUrl( getUrl( `SHOP_CATEGORY_SHOES` ) );
+  else if ( utils.isNonEmptyString( channel ) ) {
+    let linkName = `${ channel }`;
+
+    if ( utils.isNonEmptyString( category ) ) {
+      linkName += `_CATEGORY_${ category }`;
     }
+
+    if ( utils.isNonEmptyString( page ) ) {
+      linkName = `_${ page }`;
+    }
+
+    navigateToUrl( getUrl( linkName ) );
   }
 }
 
@@ -295,5 +303,7 @@ function navigateToPage( strPage ) {
  */
 
 function navigateToUrl( strUrl ) {
-  location.assign( utils.updateQueryString( 'utm_source', 'swaggy', strUrl ) );
+  if ( utils.isNonEmptyString( strUrl ) ) {
+    location.assign( utils.updateQueryString( 'utm_source', 'swaggy', strUrl ) );
+  }
 }

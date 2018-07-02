@@ -18,10 +18,16 @@ Supported commands
     - Log in
     - the Homepage
     - Shop
+      - All Stores
+      - All Coupons
+      - Grocery Coupons
+      - Local Shopping
+      - In-Store Promos
       - Shoes category
     - Discover
     - Watch
     - Answer
+      - Daily Poll
     - Rewards
     - Swagstakes
     - Play

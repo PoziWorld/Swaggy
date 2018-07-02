@@ -10,6 +10,7 @@ const URLS = Map( {
   // Channel-specific
   ACCOUNT_HOMEPAGE: '/account/settings',
   ANSWER_HOMEPAGE: '/surveys',
+  ANSWER_DAILY_POLL: '/polls',
   DISCOVER_HOMEPAGE: '/discover',
   HOMEPAGE_HOMEPAGE: '/', // Will there be categories, pages for this channel?
   PLAY_HOMEPAGE: '/games',
@@ -18,6 +19,11 @@ const URLS = Map( {
   SEARCH_HOMEPAGE: 'https://search.swagbucks.com/',
   SEARCH_WEB: '/?q=%s',
   SHOP_HOMEPAGE: '/shop',
+  SHOP_ALL_STORES: '/shop/all-stores-coupons/',
+  SHOP_ALL_COUPONS: '/shop/allcoupons/online',
+  SHOP_GROCERY_COUPONS: '/shop/allcoupons/grocery',
+  SHOP_LOCAL: '/cashback',
+  SHOP_IN_STORE: '/shop/in-store',
   SHOP_CATEGORY_SHOES: '/shop/stores/1/shoes',
   SHOP_SEARCH: '/shop/search/?shq=%s',
   SWAGSTAKES_HOMEPAGE: '/swagstakes',
