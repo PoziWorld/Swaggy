@@ -36,7 +36,7 @@ const URLS = Map( {
   // External
   EXTENSION_RATE_CHROMIUM: 'https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf/reviews',
   EXTENSION_OPTIONS_CHROMIUM: 'chrome://extensions/?options=EXTENSION_ID',
-  EXTENSION_HELP: 'https://github.com/PoziWorld/Swaggy',
+  EXTENSION_HELP: 'https://goo.gl/forms/5eGwzGnhPOO6C3892',
   EXTENSION_COMMANDS: 'https://github.com/PoziWorld/Swaggy#supported-commands',
   EXTENSION_COMMANDS_EXAMPLES: 'https://github.com/PoziWorld/Swaggy#examples-of-what-you-can-say',
   EXTENSION_TRANSLATION_PORTAL: 'https://www.transifex.com/poziworld/swaggy/',

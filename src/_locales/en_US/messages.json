@@ -104,6 +104,11 @@
     "description": "Text of a link to the Swagbucks sign-up page."
   },
 
+  "allPurposeContactUs": {
+    "message": "Get support / Give feedback",
+    "description": "Text of a link to the Swaggy “Contact us” page."
+  },
+
   "helpTranslate": {
     "message": "Help translate {{shortName}}",
     "description": "Text of a link to the Swaggy translation portal."

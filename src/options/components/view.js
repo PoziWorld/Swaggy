@@ -19,6 +19,10 @@ const helpfulLinks = List( [
     'joinSwagbucks',
   ] ),
   List( [
+    'EXTENSION_HELP',
+    'allPurposeContactUs',
+  ] ),
+  List( [
     'EXTENSION_TRANSLATION_PORTAL',
     'helpTranslate',
     'shortName',
