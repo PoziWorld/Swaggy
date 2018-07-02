@@ -3,6 +3,8 @@ import { Map } from 'immutable';
 import * as utils from 'Shared/utils';
 
 const URLS = Map( {
+  LOG_IN: '/p/login',
+  SIGN_UP: '/p/register?rb=45597732',
   SIGN_UP_FULL: 'https://www.swagbucks.com/p/register?rb=45597732',
 
   // Channel-specific
