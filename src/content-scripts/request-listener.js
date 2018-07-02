@@ -339,7 +339,7 @@ function logRecognizedText( text ) {
     const message = t(
       RECOGNIZED_TEXT_LOG_MESSAGE_KEY,
       {
-        text,
+        text: text.trim(),
         optionsUrl: getUrl( `EXTENSION_OPTIONS_CHROMIUM` ).replace( `EXTENSION_ID`, browser.runtime.id ),
       },
     );
