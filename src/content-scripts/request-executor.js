@@ -2,6 +2,8 @@ import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
 import getUrl from 'Models/urls';
 
+import * as toggleHandler from './toggle-handler';
+
 /**
  * Parameters for “navigate” intent.
  *
@@ -223,9 +225,7 @@ export function toggle( objParameters ) {
       switch ( pageElement ) {
         case 'swagcode':
         {
-          const visible = $( '#sbGlobalNavSwagCodeDropdown' ).is( ':visible' );
-
-          $( '#sbSwagCodeContainer' ).trigger( visible ? 'mouseout' : 'mouseover' );
+          toggleHandler.toggleSwagCodeWidget();
 
           break;
         }
