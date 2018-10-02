@@ -59,6 +59,8 @@ Supported commands
   - the page
 - Toggle Swag Code widget
 - Help
+- Close
+  - tab
 
 
 ### Examples of what you can say

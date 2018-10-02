@@ -2,7 +2,8 @@ import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
 import getUrl from 'Models/urls';
 
-import * as toggleHandler from './toggle-handler';
+import * as toggleHandler from './handlers/toggle';
+import * as closeHandler from './handlers/close';
 
 /**
  * Parameters for “navigate” intent.
@@ -244,6 +245,32 @@ export function help( objParameters ) {
   logger.info( `help: %j`, objParameters );
 
   navigateToUrl( getUrl( `EXTENSION_HELP` ) );
+}
+
+/**
+ * Close a page element (i.e., a modal) or a page (tab) itself.
+ *
+ * @param {Object} objParameters
+ */
+
+export function close( objParameters ) {
+  logger.info( `close: %j`, objParameters );
+
+  if ( utils.isNonEmptyObject( objParameters ) ) {
+    const pageElement = objParameters[ 'closable-page-element' ];
+
+    if ( utils.isNonEmptyString( pageElement ) ) {
+      switch ( pageElement ) {
+        case 'page':
+        case 'tab':
+        {
+          closeHandler.closeTab();
+
+          break;
+        }
+      }
+    }
+  }
 }
 
 /**

@@ -39,6 +39,7 @@ export function processResponse( objResponse ) {
           case 'refresh':
           case 'toggle':
           case 'help':
+          case 'close':
           {
             executor[ camelCase( intentName ) ]( objParameters );
 
