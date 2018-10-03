@@ -262,7 +262,6 @@ export function close( objParameters ) {
     if ( utils.isNonEmptyString( pageElement ) ) {
       switch ( pageElement ) {
         case 'page':
-        case 'tab':
         {
           closeHandler.closeTab();
 

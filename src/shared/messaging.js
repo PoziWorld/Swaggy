@@ -2,7 +2,7 @@ import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLBoolean } from 'graph
 
 import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
-import { setBrowserAction } from 'Background/messaging';
+import * as backgroundHandlers from 'Background/messaging';
 import { switchVoiceControlListener } from 'ContentScripts/messaging';
 
 /**
@@ -27,6 +27,15 @@ const VoiceControlListenerType = new GraphQLObjectType( {
   } ),
 } );
 
+const TabType = new GraphQLObjectType( {
+  name: 'Tab',
+  fields: () => ( {
+    open: {
+      type: GraphQLBoolean,
+    },
+  } ),
+} );
+
 const schema = new GraphQLSchema( {
   query: new GraphQLObjectType( {
     name: 'RootQueryType',
@@ -37,6 +46,9 @@ const schema = new GraphQLSchema( {
       voiceControlListener: {
         type: VoiceControlListenerType,
       },
+      tab: {
+        type: TabType,
+      },
     } ),
   } ),
   mutation: new GraphQLObjectType( {
@@ -44,11 +56,15 @@ const schema = new GraphQLSchema( {
     fields: () => ( {
       browserAction: {
         type: BrowserActionType,
-        resolve: ( options ) => setBrowserAction( options ),
+        resolve: ( options ) => backgroundHandlers.setBrowserAction( options ),
       },
       voiceControlListener: {
         type: VoiceControlListenerType,
         resolve: ( options ) => switchVoiceControlListener( options ),
+      },
+      tab: {
+        type: TabType,
+        resolve: ( options ) => backgroundHandlers.setTab( options ),
       },
     } ),
   } ),
@@ -70,6 +86,13 @@ export const queries = {
     mutation: `mutation {
       voiceControlListener {
         listening
+      }
+    }`,
+  },
+  tab: {
+    mutation: `mutation {
+      tab {
+        open
       }
     }`,
   },
@@ -101,7 +124,7 @@ export async function handleOnMessageEvent( { apiRequest }, { tab } ) {
 }
 
 /**
- * If the message received is an API request, execute the specified query with optional parameters against the specified tab.
+ * If the received message is an API request, execute the specified query with optional parameters against the specified tab.
  *
  * @param {string} query - The GraphQL query to execute.
  * @param {Object} [data] - Mutation parameters.
