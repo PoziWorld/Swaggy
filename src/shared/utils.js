@@ -83,3 +83,23 @@ export function updateQueryString( key, value, url ) {
     }
   }
 }
+
+/**
+ * Check whether the element is on the currently visible part of the page.
+ *
+ * Source: https://stackoverflow.com/a/7557433
+ *
+ * @param {HTMLElement} element
+ * @return {boolean}
+ */
+
+export function isElementInViewport( element ) {
+  const rect = element.getBoundingClientRect();
+
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= ( window.innerHeight || document.documentElement.clientHeight ) &&
+    rect.right <= ( window.innerWidth || document.documentElement.clientWidth )
+  );
+}

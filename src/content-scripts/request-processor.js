@@ -34,6 +34,7 @@ export function processResponse( objResponse ) {
         switch ( intentName ) {
           case 'navigate':
           case 'search':
+          case 'click':
           case 'change-view':
           case 'sort':
           case 'refresh':

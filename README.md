@@ -45,6 +45,7 @@ Supported commands
   - Web
   - Rewards
   - Swagstakes
+- Click CARD_CAPTION card
 - Switch to VIEW_TYPE view
   - where VIEW_TYPE:
     - cards

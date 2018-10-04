@@ -2,6 +2,7 @@ import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
 import getUrl from 'Models/urls';
 
+import * as clickHandler from './handlers/click';
 import * as toggleHandler from './handlers/toggle';
 import * as closeHandler from './handlers/close';
 
@@ -81,6 +82,31 @@ export function search( objParameters ) {
         case 'swagstakes':
         {
           navigateToUrl( getUrl( `${ searchType }_SEARCH` ).replace( `%s`, encodeURIComponent( searchTerm ) ) );
+
+          break;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Trigger click/tap action on a card, call-to-action, logo, etc.
+ *
+ * @param {Object} parameters
+ */
+
+export function click( parameters ) {
+  logger.info( `click: %j`, parameters );
+
+  if ( utils.isNonEmptyObject( parameters ) ) {
+    const pageElement = parameters[ 'clickable-page-element' ];
+
+    if ( utils.isNonEmptyString( pageElement ) ) {
+      switch ( pageElement ) {
+        case 'card':
+        {
+          clickHandler.clickCard( parameters );
 
           break;
         }
