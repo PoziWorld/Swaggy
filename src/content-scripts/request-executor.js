@@ -5,6 +5,7 @@ import getUrl from 'Models/urls';
 import * as clickHandler from './handlers/click';
 import * as toggleHandler from './handlers/toggle';
 import * as closeHandler from './handlers/close';
+import * as scrollHandler from './handlers/scroll';
 
 /**
  * Parameters for “navigate” intent.
@@ -274,7 +275,7 @@ export function help( objParameters ) {
 }
 
 /**
- * Close a page element (i.e., a modal) or a page (tab) itself.
+ * Close a page element (i.e., a modal) or the page (tab) itself.
  *
  * @param {Object} objParameters
  */
@@ -290,6 +291,31 @@ export function close( objParameters ) {
         case 'page':
         {
           closeHandler.closeTab();
+
+          break;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Scroll a page element (i.e., a tray) or the page (tab) itself.
+ *
+ * @param {Object} parameters
+ */
+
+export function scroll( parameters ) {
+  logger.info( `scroll: %j`, parameters );
+
+  if ( utils.isNonEmptyObject( parameters ) ) {
+    const pageElement = parameters[ 'scrollable-page-element' ];
+
+    if ( utils.isNonEmptyString( pageElement ) ) {
+      switch ( pageElement ) {
+        case 'page':
+        {
+          scrollHandler.scrollPage( parameters );
 
           break;
         }

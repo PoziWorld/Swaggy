@@ -61,6 +61,7 @@ Supported commands
 - Toggle Swag Code widget
 - Help
 - Close page
+- Scroll page
 
 
 ### Examples of what you can say
