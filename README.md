@@ -70,9 +70,11 @@ Supported commands
 - Go to the Homepage
 - Go to Shop Shoes category
 - Search for Amazon on Rewards
+- Click the Walmart card
 - Switch to list view
 - Sort by points from maximum to minimum
 - Refresh the page
+- Scroll the page down
 
 
 Caveats
