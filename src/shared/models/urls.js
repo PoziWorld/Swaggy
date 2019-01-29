@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 
 import * as utils from 'Shared/utils';
 
+const URL_QUERY = '%s';
 const URLS = Map( {
   LOG_IN: '/p/login',
   SIGN_UP: '/p/register?rb=45597732',
@@ -15,9 +16,9 @@ const URLS = Map( {
   HOMEPAGE_HOMEPAGE: '/', // Will there be categories, pages for this channel?
   PLAY_HOMEPAGE: '/games',
   REWARDS_HOMEPAGE: '/rewards-store',
-  REWARDS_SEARCH: '/p/category/-3?srt=5&src=%s',
+  REWARDS_SEARCH: `/p/category/-3?srt=5&src=${ URL_QUERY }`,
   SEARCH_HOMEPAGE: 'https://search.swagbucks.com/',
-  SEARCH_WEB: '/?q=%s',
+  SEARCH_WEB: `/?q=${ URL_QUERY }`,
   SHOP_HOMEPAGE: '/shop',
   SHOP_ALL_STORES: '/shop/all-stores-coupons/',
   SHOP_ALL_COUPONS: '/shop/allcoupons/online',
@@ -25,10 +26,11 @@ const URLS = Map( {
   SHOP_LOCAL: '/cashback',
   SHOP_IN_STORE: '/shop/in-store',
   SHOP_CATEGORY_SHOES: '/shop/stores/1/shoes',
-  SHOP_SEARCH: '/shop/search/?shq=%s',
-  SHOP_COUPONS_SEARCH: '/shop/search?shq=%s&filter=2',
+  SHOP_SEARCH: `/shop/search/?shq=${ URL_QUERY }`,
+  SHOP_COUPONS_SEARCH: `/shop/search?shq=${ URL_QUERY }&filter=2`,
+  SHOP_INTERSTITIAL: `/g/shopredir?merchant=${ URL_QUERY }`,
   SWAGSTAKES_HOMEPAGE: '/swagstakes',
-  SWAGSTAKES_SEARCH: '/s/category/-3?srt=5&src=%s',
+  SWAGSTAKES_SEARCH: `/s/category/-3?srt=5&src=${ URL_QUERY }`,
   WATCH_HOMEPAGE: '/watch',
 
   // Standalone pages
@@ -56,6 +58,20 @@ const URLS = Map( {
   POZITONE: 'https://pozitone.com',
 } );
 
+const SHOP_MERCHANT_IDS = Map( {
+  AMAZON: 793,
+  AMERICANEAGLE: 1875,
+  BESTBUY: 10768,
+  EBAY: 1635,
+  EXPEDIA: 17,
+  GAP: 323,
+  GROUPON: 1234,
+  MACYS: 135,
+  OLDNAVY: 324,
+  TARGET: 1637,
+  WALMART: 183,
+} );
+
 /**
  * Find a URL by the link name.
  *
@@ -72,6 +88,25 @@ export default function getUrl( linkName ) {
 }
 
 /**
+ * Find a merchant website URL by the merchant name.
+ *
+ * @param {string} merchantName
+ * @return {(string|boolean)}
+ */
+
+export function getMerchantUrl( merchantName ) {
+  if ( utils.isNonEmptyString( merchantName ) ) {
+    const merchantId = SHOP_MERCHANT_IDS.get( formatMerchantName( merchantName ) );
+
+    if ( Number.isInteger( merchantId ) ) {
+      return URLS.get( `SHOP_INTERSTITIAL` ).replace ( URL_QUERY, merchantId );
+    }
+  }
+
+  return false;
+}
+
+/**
  * Convert text to URLS object property.
  *
  * @param {string} linkName
@@ -80,4 +115,15 @@ export default function getUrl( linkName ) {
 
 function formatLinkName( linkName ) {
   return linkName.toUpperCase().replace( / /g, `_` );
+}
+
+/**
+ * Normalize the merchant name by removing special characters and upper-casing the letters.
+ *
+ * @param {string} merchantName
+ * @return {string}
+ */
+
+function formatMerchantName( merchantName ) {
+  return merchantName.toUpperCase().replace( /(.com)|(\s)|([-_.'])/g, `` );
 }

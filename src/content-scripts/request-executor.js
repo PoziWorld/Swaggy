@@ -1,6 +1,6 @@
 import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
-import getUrl from 'Models/urls';
+import getUrl, { getMerchantUrl } from 'Models/urls';
 
 import * as clickHandler from './handlers/click';
 import * as toggleHandler from './handlers/toggle';
@@ -95,6 +95,28 @@ export function search( objParameters ) {
 
           break;
         }
+      }
+    }
+  }
+}
+
+/**
+ * Go to a merchant website via the corresponding Swagbucks interstitial page.
+ *
+ * @param {Object} objParameters
+ */
+
+export function shop( objParameters ) {
+  logger.info( `shop: %j`, objParameters );
+
+  if ( utils.isNonEmptyObject( objParameters ) ) {
+    const merchant = objParameters[ 'merchant' ];
+
+    if ( utils.isNonEmptyString( merchant ) ) {
+      const merchantUrl = getMerchantUrl( merchant );
+
+      if ( utils.isNonEmptyString( merchantUrl ) ) {
+        navigateToUrl( merchantUrl );
       }
     }
   }

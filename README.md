@@ -46,6 +46,7 @@ Supported commands
   - Rewards
   - Swagstakes
 - Find MERCHANT_NAME coupons
+- Get cash back from MERCHANT_NAME*
 - Click CARD_CAPTION card
 - Switch to VIEW_TYPE view
   - where VIEW_TYPE:
@@ -64,6 +65,8 @@ Supported commands
 - Close page
 - Scroll page
 
+\* Only Amazon, American Eagle, Best Buy, eBay, Expedia, Gap, Groupon, Macy's, Old Navy, Target, and Walmart are supported at the moment.
+
 
 ### Examples of what you can say
 
@@ -72,6 +75,7 @@ Supported commands
 - Go to Shop Shoes category
 - Search for Amazon on Rewards
 - Find coupons for Target
+- Get cash back from Best Buy
 - Click the Walmart card
 - Switch to list view
 - Sort by points from maximum to minimum
