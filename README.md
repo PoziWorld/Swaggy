@@ -45,6 +45,7 @@ Supported commands
   - Web
   - Rewards
   - Swagstakes
+- Find MERCHANT_NAME coupons
 - Click CARD_CAPTION card
 - Switch to VIEW_TYPE view
   - where VIEW_TYPE:
@@ -70,6 +71,7 @@ Supported commands
 - Go to the Homepage
 - Go to Shop Shoes category
 - Search for Amazon on Rewards
+- Find coupons for Target
 - Click the Walmart card
 - Switch to list view
 - Sort by points from maximum to minimum

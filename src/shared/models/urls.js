@@ -26,6 +26,7 @@ const URLS = Map( {
   SHOP_IN_STORE: '/shop/in-store',
   SHOP_CATEGORY_SHOES: '/shop/stores/1/shoes',
   SHOP_SEARCH: '/shop/search/?shq=%s',
+  SHOP_COUPONS_SEARCH: '/shop/search?shq=%s&filter=2',
   SWAGSTAKES_HOMEPAGE: '/swagstakes',
   SWAGSTAKES_SEARCH: '/s/category/-3?srt=5&src=%s',
   WATCH_HOMEPAGE: '/watch',
