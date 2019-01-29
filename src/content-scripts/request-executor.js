@@ -68,15 +68,7 @@ export function search( objParameters ) {
 
   if ( utils.isNonEmptyObject( objParameters ) ) {
     const searchType = objParameters[ 'search-type' ];
-    let searchTerm = objParameters[ 'search-term' ];
-
-    /**
-     * @todo When the issue is fixed on the back end, remove the check.
-     */
-
-    if ( Array.isArray( searchTerm ) && searchTerm.length ) {
-      searchTerm = searchTerm[ 0 ];
-    }
+    const searchTerm = objParameters[ 'search-term' ];
 
     if ( utils.isNonEmptyString( searchType ) && utils.isNonEmptyString( searchTerm ) ) {
       switch ( searchType ) {
