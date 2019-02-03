@@ -47,20 +47,21 @@ Supported commands
   - Swagstakes
 - Find MERCHANT_NAME coupons
 - Get cash back from MERCHANT_NAME*
-- Click CARD_CAPTION card
-- Switch to VIEW_TYPE view
+- Click CARD_CAPTION card _(when on the screen)_
+- Switch to VIEW_TYPE view _(when there is a toggle on the page)_
   - where VIEW_TYPE:
     - cards
     - list
-- Sort by
-  - points from maximum to minimum
-  - points from minimum to maximum
-  - alphabetically (from A to Z)
-  - alphabetically from Z to A
+- Sort by SORT_TYPE _(when the page allows)_
+  - where SORT_TYPE:
+    - points from maximum to minimum
+    - points from minimum to maximum
+    - alphabetically (from A to Z)
+    - alphabetically from Z to A
 - Refresh
-  - my balance
+  - my balance _(when on the screen while logged-in)_
   - the page
-- Toggle Swag Code widget
+- Toggle Swag Code widget _(if present)_
 - Help
 - Close page
 - Scroll page
