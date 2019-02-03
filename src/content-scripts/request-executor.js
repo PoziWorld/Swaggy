@@ -238,7 +238,7 @@ export function refresh( objParameters ) {
       switch ( pageElement ) {
         case 'page':
         {
-          navigateToUrl();
+          navigateToUrl( window.location.href );
 
           break;
         }
@@ -405,6 +405,6 @@ function navigateToPage( page ) {
 
 function navigateToUrl( url ) {
   if ( utils.isNonEmptyString( url ) ) {
-    location.assign( utils.updateQueryString( 'utm_source', 'swaggy', url ) );
+    window.location.assign( utils.updateQueryString( 'utm_source', 'swaggy', url ) );
   }
 }
