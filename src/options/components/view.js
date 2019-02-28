@@ -4,6 +4,7 @@ import { Trans } from 'react-i18next';
 import { List } from 'immutable';
 import bowser from 'bowser';
 
+import * as utils from 'Shared/utils';
 import t from 'Shared/i18n';
 import getUrl from 'Models/urls';
 import { settingsShape, settingsToViewProperties } from 'Models/settings';
@@ -117,6 +118,7 @@ export default class View extends PureComponent {
               className="pwText"
               role="status"
               aria-live="polite"
+              hidden={ ! utils.isNonEmptyString( message ) }
                 >
               { message }
             </p>

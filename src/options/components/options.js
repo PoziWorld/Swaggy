@@ -21,6 +21,7 @@ let notification;
 const NOTIFICATION_DURATION = 2000;
 const NOTIFICATION_SUCCESS = 'saveSettingsSuccess';
 const NOTIFICATION_PLACEBO_SUCCESS = 'saveSettingsPlaceboSuccess';
+const NOTIFICATION_RESET_MESSAGE = '';
 
 class Options extends PureComponent {
   state = {
@@ -161,15 +162,31 @@ class Options extends PureComponent {
       {
         settingsFormMessage: t( messageKey ),
       },
-      () => {
-        notification = window.setTimeout( () => {
-          this.setState( {
-            settingsFormMessage: '',
-          } );
-        }, NOTIFICATION_DURATION );
-      }
+      this.scheduleNotificationReset,
     );
+  }
 
+  /**
+   * Reset the notification after delay.
+   */
+
+  scheduleNotificationReset() {
+    notification = window.setTimeout(
+      this.resetNotification.bind( this ),
+      NOTIFICATION_DURATION,
+    );
+  }
+
+  /**
+   * Clear the notification message.
+   */
+
+  resetNotification() {
+    this.setState(
+      {
+        settingsFormMessage: NOTIFICATION_RESET_MESSAGE,
+      },
+    );
   }
 }
 
