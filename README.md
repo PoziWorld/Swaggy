@@ -82,17 +82,15 @@ Supported commands
 
 ### Examples of what you can say
 
-- Go back
-- Go to the Homepage
-- Go to Shop Shoes category
-- Search for Amazon on Rewards
+- Go to the Homepage/Shop/Discover/Watch/Play
+- Search for Amazon on Rewards/Shop/Swagstakes/Web
 - Find coupons for Target
 - Get cash back from Best Buy
-- Click the Walmart card
-- Switch to list view
-- Sort by points from maximum to minimum
+- Click the Walmart card (when on the screen)
+- Switch to list view (when there is a toggle on the page)
+- Sort by points from maximum to minimum (when the page allows)
 - Refresh the page
-- Scroll the page down
+- Scroll down/up the page
 
 
 Caveats
