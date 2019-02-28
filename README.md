@@ -96,8 +96,8 @@ Supported commands
 Caveats
 --------
 
-* Due to browser security policies, Swaggy works only on secure (https://) pages.
-* If you navigate away from a Swagbucks domain you allowed microphone use on, Swaggy will not work there.
+* Due to browser security policies, [Swaggy](https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf) works only on secure (https://) pages.
+* If you navigate away from a Swagbucks domain you allowed microphone use on, [Swaggy](https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf) will not work there.
 
 
 Credits
