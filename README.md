@@ -18,6 +18,20 @@ How to activate
 - Allow use of your microphone.
 
 
+Examples of what you can say
+--------
+
+- Go to the Homepage/Shop/Discover/Watch/Play
+- Search for Amazon on Rewards/Shop/Swagstakes/Web
+- Find coupons for Target
+- Get cash back from Best Buy
+- Click the Walmart card (when on the screen)
+- Switch to list view (when there is a toggle on the page)
+- Sort by points from maximum to minimum (when the page allows)
+- Refresh the page
+- Scroll down/up the page
+
+
 Supported commands
 --------
 
@@ -78,19 +92,6 @@ Supported commands
 - Scroll page
 
 \* Only Amazon, American Eagle, Best Buy, eBay, Expedia, Gap, Groupon, Macy's, Old Navy, Target, and Walmart are supported at the moment.
-
-
-### Examples of what you can say
-
-- Go to the Homepage/Shop/Discover/Watch/Play
-- Search for Amazon on Rewards/Shop/Swagstakes/Web
-- Find coupons for Target
-- Get cash back from Best Buy
-- Click the Walmart card (when on the screen)
-- Switch to list view (when there is a toggle on the page)
-- Sort by points from maximum to minimum (when the page allows)
-- Refresh the page
-- Scroll down/up the page
 
 
 Caveats
