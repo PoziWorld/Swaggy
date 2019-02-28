@@ -2,7 +2,7 @@ Swaggy
 =======
 
 
-Voice control for Swagbucks.com (unofficial) | Accessibility-friendly.
+Voice control for Swagbucks.com (unofficial). Accessibility-friendly.
 
 ([Swaggy](https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf) is a browser extension for Google Chrome.)
 
