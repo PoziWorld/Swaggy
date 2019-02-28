@@ -1,16 +1,16 @@
 {
   "extensionName": {
-    "message": "Swaggy [BETA]",
-    "description": "Should not be translated."
+    "message": "Swaggy [BETA] – more accessible Swagbucks",
+    "description": "Should not be translated. Maximum of 45 characters."
   },
 
   "shortName": {
     "message": "Swaggy",
-    "description": "Should not be translated."
+    "description": "Should not be translated. Maximum of 12 characters recommended."
   },
 
   "extensionDescription": {
-    "message": "Unofficial voice control for Swagbucks.com | Works only on secure (https://) pages",
+    "message": "Voice control for Swagbucks.com (unofficial). Accessibility-friendly",
     "description": "Maximum size limit of 132 characters."
   },
 
