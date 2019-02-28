@@ -9,7 +9,13 @@ Voice control for Swagbucks.com (unofficial) | Accessibility-friendly.
 [Swaggy](https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf) makes Swagbucks.com a little bit more accessible by letting you search, navigate, click, sort without looking for the corresponding buttons, links, toggles on a page.
 
 
-(Swaggy is a browser extension for Google Chrome.)
+How to activate
+--------
+
+- Install [Swaggy](https://chrome.google.com/webstore/detail/swaggy-beta/beblcchllamebejoakjbhhajpmlkjoaf).
+- Go to a secure (https://) [swagbucks.com](https://www.swagbucks.com/p/register?rb=45597732) page.
+- Click on the microphone icon with the “OFF” badge next to the address bar.
+- Allow use of your microphone.
 
 
 Supported commands
