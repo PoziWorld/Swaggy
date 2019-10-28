@@ -3,6 +3,7 @@ import camelCase from 'camelcase';
 
 import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
+import { setBrowserAction } from 'ContentScripts/request-listener';
 
 import * as executor from './request-executor';
 
@@ -11,6 +12,8 @@ import { ACCESS_TOKEN_DEVELOPMENT, ACCESS_TOKEN_PRODUCTION } from '../.privateac
 export const processor = new ApiAiClient( {
   accessToken: process.env.NODE_ENV === 'development' ? ACCESS_TOKEN_DEVELOPMENT : ACCESS_TOKEN_PRODUCTION,
 } );
+
+const API_AI_REQUEST_ERROR = 'ApiAiRequestError';
 
 /**
  * Identify the intent.
@@ -57,9 +60,19 @@ export function processResponse( objResponse ) {
 /**
  * On text-to-intent API failure.
  *
- * @param {Object} objError
+ * @param {Object} error
  */
 
-export function processError( objError ) {
-  logger.error( objError );
+export async function processError( error ) {
+  logger.error( error );
+
+  const errorName = error.name;
+
+  if ( utils.isNonEmptyString( errorName ) ) {
+    if ( errorName === API_AI_REQUEST_ERROR ) {
+      await setBrowserAction( {
+        errorOccurred: true,
+      } );
+    }
+  }
 }

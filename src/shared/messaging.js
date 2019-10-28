@@ -15,6 +15,9 @@ const BrowserActionType = new GraphQLObjectType( {
     listening: {
       type: GraphQLBoolean,
     },
+    errorOccurred: {
+      type: GraphQLBoolean,
+    },
   } ),
 } );
 
@@ -79,6 +82,7 @@ export const queries = {
     mutation: `mutation {
       browserAction {
         listening
+        errorOccurred
       }
     }`,
   },

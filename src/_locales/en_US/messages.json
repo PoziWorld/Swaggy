@@ -141,7 +141,12 @@
 
   "browserActionBadgeText_off": {
     "message": "OFF",
-    "description": "Browser action badge text when the voice control listener is active. Ideally, should be 2-3 characters long. Otherwise, it will be shortened anyway and “...” will be displayed next to it."
+    "description": "Browser action badge text when the voice control listener is inactive. Ideally, should be 2-3 characters long. Otherwise, it will be shortened anyway and “...” will be displayed next to it."
+  },
+
+  "browserActionBadgeText_error": {
+    "message": "ERR",
+    "description": "Browser action badge text when an error occurred. Ideally, should be 2-3 characters long. Otherwise, it will be shortened anyway and “...” will be displayed next to it."
   },
 
   "browserActionBadgeTitle_on": {
@@ -152,6 +157,11 @@
   "browserActionBadgeTitle_off": {
     "message": "{{extensionName}}:\nListening for commands: NO.\n\nClick to switch voice control on.",
     "description": "Browser action badge title displayed in a tooltip over the browser action's icon when the voice control listener is inactive."
+  },
+
+  "browserActionBadgeTitle_error": {
+    "message": "{{extensionName}}:\nUnfortunately, an unexpected error occurred.\n\nPlease try again.\n\nIf the issue persists, please contact the developer via the form at {{- supportUrl}}\n\n",
+    "description": "Browser action badge title displayed in a tooltip over the browser action's icon when an error occurred."
   },
 
   "logListenerStartedEvent": {

@@ -5,6 +5,13 @@ import logger from 'Shared/logger';
 import * as utils from 'Shared/utils';
 import t from 'Shared/i18n';
 import { queries } from 'Shared/messaging';
+import getUrl from 'Models/urls';
+
+const browserActionStatuses = {
+  ON: 'on',
+  OFF: 'off',
+  ERROR: 'error',
+};
 
 /**
  * Other parts of extension (content scripts, browser action, options) might send API requests to the background script because they don't have access to all extension APIs.
@@ -36,41 +43,32 @@ const statusOffIcons = generateStatusIconsDictionary( `off` );
 /**
  * Change browser action state depending on voice control listener status.
  *
- * @param {boolean} listening
+ * @param {boolean} [listening]
+ * @param {boolean} [errorOccurred]
  * @param {number} tabId
  * @return {Promise<void>}
  */
 
-export async function setBrowserAction( { data: { listening }, tab: { id: tabId } } ) {
-  logger.verbose( `setBrowserAction: %j, %j`, listening, tabId );
+export async function setBrowserAction( { data: { listening, errorOccurred }, tab: { id: tabId } } ) {
+  logger.verbose( `setBrowserAction: %j, %j`, listening, errorOccurred, tabId );
 
-  if ( utils.is( listening, `boolean` ) ) {
-    try {
-      const enabled = await browser.browserAction.isEnabled( { tabId: tabId } );
-      logger.verbose( `setBrowserAction: %s`, enabled );
+  if ( utils.is( listening, `boolean` ) || utils.is( errorOccurred, `boolean` ) ) {
+    await requestToEnableBrowserAction( tabId );
 
-      if ( ! enabled ) {
-        enableBrowserAction( tabId );
-      }
+    const status = listening ?
+      browserActionStatuses.ON :
+      errorOccurred ?
+        browserActionStatuses.ERROR :
+        browserActionStatuses.OFF;
+
+    if ( status !== browserActionStatuses.ERROR ) {
+      browser.browserAction.setIcon( {
+        path: listening ?
+          statusOnIcons :
+          statusOffIcons,
+        tabId,
+      } );
     }
-    catch ( e ) {
-      /**
-       * Possible reason: this is Chrome that doesn't have isEnabled method.
-       *
-       * https://developer.chrome.com/extensions/browserAction
-       */
-
-      logger.debug( `setBrowserAction: isEnabled check: fail: %j`, e );
-
-      enableBrowserAction( tabId );
-    }
-
-    browser.browserAction.setIcon( {
-      path: listening ? statusOnIcons : statusOffIcons,
-      tabId,
-    } );
-
-    const status = listening ? 'on' : 'off';
 
     browser.browserAction.setBadgeText( {
       text: composeBadgeText( status ),
@@ -112,10 +110,42 @@ function composeBadgeText( status ) {
 
 function composeTitle( status ) {
   if ( utils.isNonEmptyString( status ) ) {
-    return t( `browserActionBadgeTitle_${ status }`, { extensionName: t( `extensionName` ), } );
+    return t( `browserActionBadgeTitle_${ status }`, {
+      extensionName: t( `extensionName` ),
+      supportUrl: getUrl( `EXTENSION_SUPPORT_CHROMIUM` ),
+    } );
   }
 
   return false;
+}
+
+/**
+ * Attempt to enable the browser action if it's not enabled.
+ *
+ * @param {number} tabId
+ * @return {Promise<void>}
+ */
+
+async function requestToEnableBrowserAction( tabId ) {
+  try {
+    const enabled = await browser.browserAction.isEnabled( { tabId } );
+    logger.verbose( `setBrowserAction: %s`, enabled );
+
+    if ( ! enabled ) {
+      enableBrowserAction( tabId );
+    }
+  }
+  catch ( e ) {
+    /**
+     * Possible reason: this is Chrome that doesn't have isEnabled method.
+     *
+     * https://developer.chrome.com/extensions/browserAction
+     */
+
+    logger.debug( `setBrowserAction: isEnabled check: fail: %j`, e );
+
+    enableBrowserAction( tabId );
+  }
 }
 
 /**
