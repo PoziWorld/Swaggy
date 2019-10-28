@@ -143,7 +143,9 @@ const defaultConfig = Map( {
   node: {
     fs: 'empty',
   },
-  devtool: modeDevelopment ? 'source-map' : undefined,
+  devtool: modeDevelopment ?
+    'inline-cheap-module-source-map' :
+    false,
   watch: modeDevelopment,
 } );
 
